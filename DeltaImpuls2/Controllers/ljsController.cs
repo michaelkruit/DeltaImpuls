@@ -11,6 +11,7 @@ using DeltaImpuls2.Models;
 
 namespace DeltaImpuls2.Controllers
 {
+    [Authorize]
     public class ljsController : Controller
     {
         private DeltaImpulsContext db = new DeltaImpulsContext();

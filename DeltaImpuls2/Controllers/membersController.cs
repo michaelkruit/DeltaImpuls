@@ -11,6 +11,7 @@ using PagedList;
 
 namespace DeltaImpuls2.Controllers
 {
+    [Authorize]
     public class membersController : Controller
     {
         private DeltaImpulsContext db = new DeltaImpulsContext();

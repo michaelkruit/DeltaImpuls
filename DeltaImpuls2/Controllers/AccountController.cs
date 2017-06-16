@@ -392,7 +392,7 @@ namespace DeltaImpuls2.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "members");
         }
 
         //
@@ -449,7 +449,7 @@ namespace DeltaImpuls2.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "members");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
