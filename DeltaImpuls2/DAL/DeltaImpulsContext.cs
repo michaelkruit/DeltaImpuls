@@ -10,7 +10,7 @@ namespace DeltaImpuls2.DAL
 {
     public class DeltaImpulsContext : DbContext
     {
-        public DeltaImpulsContext() : base("DefaultConnection")
+        public DeltaImpulsContext() : base("codefirstDB")
         {
         }
 
@@ -19,6 +19,7 @@ namespace DeltaImpuls2.DAL
         public DbSet<location> locations { get; set; }
         public DbSet<ls> ls { get; set; }
         public DbSet<lj> lj { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
