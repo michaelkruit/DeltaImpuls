@@ -1,0 +1,22 @@
+﻿@model DeltaImpuls2.Models.categorie
+
+@{
+    ViewBag.Title = "Verwijderen";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Weet jij zeker dat jij categorie "@Html.DisplayFor(model => model.name)" wilt verwijderen?</h3>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button type="button" class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Index")'">
+                Annuleren
+            </button>
+            <input type="submit" value="Verwijder" class="btn btn-danger btn-lg" />
+        </div>
+    }
+</div>
