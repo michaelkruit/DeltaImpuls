@@ -112,9 +112,14 @@ namespace DeltaImpuls2.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             location location = db.locations.Find(id);
-            db.locations.Remove(location);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (db.members.All(m => m.locationID != id))
+            {
+                db.locations.Remove(location);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Het is niet mogelijk om een locatie te verwijderen als er nog een lid aan gekoppeld is!");
+            return View(location);
         }
 
         protected override void Dispose(bool disposing)

@@ -113,12 +113,13 @@ namespace DeltaImpuls2.Controllers
         {
             categorie categorie = db.categorie.Find(id);
             if (db.members.All(m => m.categorieID != id))
-            { 
+            {
                 categorie = db.categorie.Find(id);
                 db.categorie.Remove(categorie);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ModelState.AddModelError("", "Het is niet mogelijk om een categorie te verwijderen als er nog een lid aan gekoppeld is!");            
             return View(categorie);
         }
 

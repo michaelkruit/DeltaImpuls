@@ -112,9 +112,14 @@ namespace DeltaImpuls2.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             lj lj = db.lj.Find(id);
-            db.lj.Remove(lj);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (db.members.All(m => m.ljID != id))
+            {
+                db.lj.Remove(lj);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Het is niet mogelijk om een licentie te verwijderen als er nog een lid aan gekoppeld is!");
+            return View(lj);
         }
 
         protected override void Dispose(bool disposing)

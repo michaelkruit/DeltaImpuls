@@ -7,6 +7,8 @@
 <h2>@ViewBag.Title</h2>
 
 <h3>Weet jij zeker dat jij de locatie "@Html.DisplayFor(model => model.city)" wilt verwijderen?</h3>
+
+<h4>@Html.ValidationMessage("", new { @class = "text-danger" })</h4>
 <div>
     @using (Html.BeginForm())
     {
