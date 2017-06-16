@@ -112,9 +112,14 @@ namespace DeltaImpuls2.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             categorie categorie = db.categorie.Find(id);
-            db.categorie.Remove(categorie);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (db.members.All(m => m.categorieID != id))
+            { 
+                categorie = db.categorie.Find(id);
+                db.categorie.Remove(categorie);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(categorie);
         }
 
         protected override void Dispose(bool disposing)
