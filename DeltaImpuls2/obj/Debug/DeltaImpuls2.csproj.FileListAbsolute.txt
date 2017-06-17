@@ -28,7 +28,6 @@ c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\Delt
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.AspNet.Identity.Core.dll
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.AspNet.Identity.Owin.dll
-c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.Owin.dll
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.Owin.Host.SystemWeb.dll
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.Owin.Security.Cookies.dll
@@ -54,7 +53,6 @@ c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\Delt
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.AI.Web.xml
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.AI.WindowsServer.xml
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.ApplicationInsights.xml
-c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\System.Web.Helpers.xml
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\System.Web.Mvc.xml
 c:\users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\System.Web.Optimization.xml
@@ -86,3 +84,5 @@ C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\Delt
 C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\PagedList.Mvc.xml
 C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.Migrations.InitialCreate.resources
 C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.csproj.GenerateResource.Cache
+C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
