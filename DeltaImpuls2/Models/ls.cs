@@ -11,7 +11,7 @@ namespace DeltaImpuls2.Models
     public class ls
     {
         public int ID { get; set; }
-        [Required, DisplayName("Licentie"), StringLength(3, MinimumLength = 1, ErrorMessage = "Licentie is niet correct ingevoerd")]
+        [Required, DisplayName("Licentie"), StringLength(5, MinimumLength = 1, ErrorMessage = "Licentie is niet correct ingevoerd")]
         [RegularExpression(@"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð-]+$",
             ErrorMessage = "Licentie is niet correct ingevoerd")]
         public string license { get; set; }
