@@ -21,7 +21,7 @@ namespace DeltaImpuls2.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("codefirstDB", throwIfV1Schema: false)
+            : base("codfirstDB", throwIfV1Schema: false)
         {
         }
 

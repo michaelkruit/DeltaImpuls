@@ -57,13 +57,13 @@ namespace DeltaImpuls2.Controllers
             {
                 members = members.Where(m => m.categorieID == categorieFilter);
             }
+            
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 members = members.Where(m =>
                 m.firstname.Contains(searchString)
-                || m.lastname.Contains(searchString)
-                );
+                || m.lastname.Contains(searchString));
             }
 
             if (searchString != null)
