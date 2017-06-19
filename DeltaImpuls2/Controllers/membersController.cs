@@ -101,7 +101,7 @@ namespace DeltaImpuls2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,firstname,lastname,insertion,bondsnr,cg,paratt,dateborn,gender,membersince,adres,postcode,city,phonennumber,mobilenumber,email,categorieID,locationID,ljID,lsID")] members members)
+        public ActionResult Create([Bind(Include = "ID,firstname,lastname,insertion,bondsnr,cg,paratt,dateborn,gender,membersince,adres,postcode,city,phonennumber,mobilenumber,email,categorieID,locationID,ljID,lsID,housenumber,suffix")] members members)
         {
             if (ModelState.IsValid)
             {
@@ -151,7 +151,7 @@ namespace DeltaImpuls2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,firstname,lastname,insertion,bondsnr,cg,paratt,dateborn,gender,membersince,adres,postcode,city,phonennumber,mobilenumber,email,categorieID,locationID,ljID,lsID")] members members)
+        public ActionResult Edit([Bind(Include = "ID,firstname,lastname,insertion,bondsnr,cg,paratt,dateborn,gender,membersince,adres,housenumber,suffix,postcode,city,phonennumber,mobilenumber,email,categorieID,locationID,ljID,lsID")] members members)
         {
             if (ModelState.IsValid)
             {

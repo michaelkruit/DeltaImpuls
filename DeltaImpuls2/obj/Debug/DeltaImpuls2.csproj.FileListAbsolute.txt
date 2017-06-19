@@ -82,8 +82,7 @@ C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\Delt
 C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\PagedList.Mvc.dll
 C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\PagedList.xml
 C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\PagedList.Mvc.xml
-C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.Migrations.InitialCreate.resources
-C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.csproj.GenerateResource.Cache
 C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.Migrations.login.InitialCreate.resources
+C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.Migrations.initial_migration.resources
+C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.csproj.GenerateResource.Cache

@@ -37,6 +37,10 @@ namespace DeltaImpuls2.Models
         public System.DateTime membersince { get; set; }
         [Required, DisplayName("Adres"), StringLength(25)]
         public string adres { get; set; }
+        [Required, DisplayName("Huisnummer")]
+        public byte housenumber { get; set; }
+        [DisplayName("Toevoeging")]
+        public string suffix { get; set; }
         [Required, DisplayName("Postcode")]
         [DataType(DataType.PostalCode), StringLength(7, MinimumLength = 4)]
         [RegularExpression(@"^[1-9][0-9]{3}\s?[a-zA-Z]{2}$", ErrorMessage = "Postcode is niet correct ingevuld")]

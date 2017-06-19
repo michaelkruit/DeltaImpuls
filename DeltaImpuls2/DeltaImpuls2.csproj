@@ -210,11 +210,11 @@
     <Compile Include="Controllers\lsController.cs" />
     <Compile Include="Controllers\membersController.cs" />
     <Compile Include="DAL\DeltaImpulsContext.cs" />
-    <Compile Include="Migrations\201706160906470_InitialCreate.cs" />
-    <Compile Include="Migrations\201706160906470_InitialCreate.Designer.cs">
-      <DependentUpon>201706160906470_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201706191352454_initial_migration.cs" />
+    <Compile Include="Migrations\201706191352454_initial_migration.Designer.cs">
+      <DependentUpon>201706191352454_initial_migration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\MainConfiguration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\categorie.cs" />
     <Compile Include="Models\lj.cs" />
     <Compile Include="Models\location.cs" />
@@ -367,8 +367,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706160906470_InitialCreate.resx">
-      <DependentUpon>201706160906470_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706191352454_initial_migration.resx">
+      <DependentUpon>201706191352454_initial_migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
