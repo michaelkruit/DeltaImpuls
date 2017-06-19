@@ -214,11 +214,6 @@
     <Compile Include="Migrations\201706160906470_InitialCreate.Designer.cs">
       <DependentUpon>201706160906470_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\login\201706161101104_InitialCreate.cs" />
-    <Compile Include="Migrations\login\201706161101104_InitialCreate.Designer.cs">
-      <DependentUpon>201706161101104_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\login\Configuration.cs" />
     <Compile Include="Migrations\MainConfiguration.cs" />
     <Compile Include="Models\categorie.cs" />
     <Compile Include="Models\lj.cs" />
@@ -374,9 +369,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706160906470_InitialCreate.resx">
       <DependentUpon>201706160906470_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\login\201706161101104_InitialCreate.resx">
-      <DependentUpon>201706161101104_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
