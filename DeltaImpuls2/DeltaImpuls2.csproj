@@ -210,12 +210,16 @@
     <Compile Include="Controllers\lsController.cs" />
     <Compile Include="Controllers\membersController.cs" />
     <Compile Include="DAL\DeltaImpulsContext.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Migrations\201706160906470_InitialCreate.cs" />
     <Compile Include="Migrations\201706160906470_InitialCreate.Designer.cs">
       <DependentUpon>201706160906470_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\login\201706161101104_InitialCreate.cs" />
+    <Compile Include="Migrations\login\201706161101104_InitialCreate.Designer.cs">
+      <DependentUpon>201706161101104_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\login\Configuration.cs" />
+    <Compile Include="Migrations\MainConfiguration.cs" />
     <Compile Include="Models\categorie.cs" />
     <Compile Include="Models\lj.cs" />
     <Compile Include="Models\location.cs" />
@@ -320,9 +324,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -341,27 +342,22 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\members\Create.cshtml" />
     <Content Include="Views\members\Delete.cshtml" />
-    <Content Include="Views\members\Details.cshtml" />
     <Content Include="Views\members\Edit.cshtml" />
     <Content Include="Views\members\Index.cshtml" />
     <Content Include="Views\locations\Create.cshtml" />
     <Content Include="Views\locations\Delete.cshtml" />
-    <Content Include="Views\locations\Details.cshtml" />
     <Content Include="Views\locations\Edit.cshtml" />
     <Content Include="Views\locations\Index.cshtml" />
     <Content Include="Views\categories\Create.cshtml" />
     <Content Include="Views\categories\Delete.cshtml" />
-    <Content Include="Views\categories\Details.cshtml" />
     <Content Include="Views\categories\Edit.cshtml" />
     <Content Include="Views\categories\Index.cshtml" />
     <Content Include="Views\ljs\Create.cshtml" />
     <Content Include="Views\ljs\Delete.cshtml" />
-    <Content Include="Views\ljs\Details.cshtml" />
     <Content Include="Views\ljs\Edit.cshtml" />
     <Content Include="Views\ljs\Index.cshtml" />
     <Content Include="Views\ls\Create.cshtml" />
     <Content Include="Views\ls\Delete.cshtml" />
-    <Content Include="Views\ls\Details.cshtml" />
     <Content Include="Views\ls\Edit.cshtml" />
     <Content Include="Views\ls\Index.cshtml" />
   </ItemGroup>
@@ -378,6 +374,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706160906470_InitialCreate.resx">
       <DependentUpon>201706160906470_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\login\201706161101104_InitialCreate.resx">
+      <DependentUpon>201706161101104_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

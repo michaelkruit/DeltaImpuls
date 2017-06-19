@@ -1,4 +1,4 @@
-namespace DeltaImpuls2.Migrations
+namespace DeltaImpuls2.Migrations.login
 {
     using Microsoft.AspNet.Identity;
     using Models;
@@ -12,7 +12,8 @@ namespace DeltaImpuls2.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "DeltaImpuls2.DAL.DeltaImpulsContext.cs";
+            MigrationsDirectory = @"Migrations\login";
+            ContextKey = "DeltaImpuls2.Models.ApplicationDbContext";
         }
 
         protected override void Seed(DeltaImpuls2.Models.ApplicationDbContext context)
