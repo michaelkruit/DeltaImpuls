@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DeltaImpuls2.Models
 {
+    /// <summary>
+    /// Gets and sets the members
+    /// </summary>
     public class members
     {
         public int ID { get; set; }

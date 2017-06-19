@@ -11,11 +11,22 @@ using PagedList;
 
 namespace DeltaImpuls2.Controllers
 {
+    /// <summary>
+    /// This controller handles the members of this application, the index is also the main page of this application
+    /// </summary>
     [Authorize]
     public class membersController : Controller
     {
         private DeltaImpulsContext db = new DeltaImpulsContext();
 
+        /// <summary>
+        /// Returns the view with the wished members
+        /// </summary>
+        /// <param name="searchString">String for searching a member</param>
+        /// <param name="locationFilter">Int for filtering on location</param>
+        /// <param name="categorieFilter">Int for filtering on categorie</param>
+        /// <param name="page">Int for knowing on wich page of the pagintion the user is on</param>
+        /// <returns></returns>
         // GET: members
         public ActionResult Index(string searchString, int? locationFilter, int? categorieFilter, int? page)
         {
@@ -66,21 +77,10 @@ namespace DeltaImpuls2.Controllers
             return View(members.OrderBy(m => m.firstname).ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: members/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            members members = db.members.Find(id);
-            if (members == null)
-            {
-                return HttpNotFound();
-            }
-            return View(members);
-        }
-
+        /// <summary>
+        /// Returns the view for creating a member
+        /// </summary>
+        /// <returns></returns>
         // GET: members/Create
         public ActionResult Create()
         {
@@ -91,6 +91,11 @@ namespace DeltaImpuls2.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Creates and saves a member in the database
+        /// </summary>
+        /// <param name="members">Member that is created</param>
+        /// <returns></returns>
         // POST: members/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -112,6 +117,11 @@ namespace DeltaImpuls2.Controllers
             return View(members);
         }
 
+        /// <summary>
+        /// Returns the view for editing a member
+        /// </summary>
+        /// <param name="id">ID of the member that is going to be edited</param>
+        /// <returns></returns>
         // GET: members/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -131,6 +141,11 @@ namespace DeltaImpuls2.Controllers
             return View(members);
         }
 
+        /// <summary>
+        /// Saves the edited member in the database
+        /// </summary>
+        /// <param name="members"></param>
+        /// <returns></returns>
         // POST: members/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -151,6 +166,11 @@ namespace DeltaImpuls2.Controllers
             return View(members);
         }
 
+        /// <summary>
+        /// Gets the member that is going to be deleted
+        /// </summary>
+        /// <param name="id">ID of the selected member</param>
+        /// <returns></returns>
         // GET: members/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -166,6 +186,11 @@ namespace DeltaImpuls2.Controllers
             return View(members);
         }
 
+        /// <summary>
+        /// Confirms that the member is deleted and deletes it from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // POST: members/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -8,6 +8,9 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace DeltaImpuls2.DAL
 {
+    /// <summary>
+    /// Generates the datatables in the selected database
+    /// </summary>
     public class DeltaImpulsContext : DbContext
     {
         public DeltaImpulsContext() : base("codefirstDB")

@@ -7,6 +7,9 @@ using System.Web;
 
 namespace DeltaImpuls2.Models
 {
+    /// <summary>
+    /// Gets and sets the junior licenses
+    /// </summary>
     public class lj
     {
         public int ID { get; set; }

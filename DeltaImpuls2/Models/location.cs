@@ -7,6 +7,9 @@ using System.Web;
 
 namespace DeltaImpuls2.Models
 {
+    /// <summary>
+    /// Gets and sets the locations
+    /// </summary>
     public class location
     {
         public int ID { get; set; }

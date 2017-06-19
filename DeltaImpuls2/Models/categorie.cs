@@ -8,6 +8,9 @@ using System.Web;
 
 namespace DeltaImpuls2.Models
 {
+    /// <summary>
+    /// Gets and sets the categories
+    /// </summary>
     public class categorie
     {
         public int ID { get; set; }
