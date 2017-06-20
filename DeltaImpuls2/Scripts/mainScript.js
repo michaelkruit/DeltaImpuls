@@ -7,6 +7,7 @@ function GetData() {
     searchValue = $('#SearchString').val();
     locationValue = $('#locationFilter').val();
     categorieValue = $('#categorieFilter').val();
+
 }
 
 $('#locationFilter').change(function () {
