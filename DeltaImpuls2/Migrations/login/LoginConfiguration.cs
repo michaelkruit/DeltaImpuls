@@ -19,17 +19,28 @@ namespace DeltaImpuls2.Migrations.login
 
         protected override void Seed(DeltaImpuls2.Models.ApplicationDbContext context)
         {
-            if(!(context.Users.Any(u => u.Email == "Deltaimpuls@hotmail.com")))
-            {
-                var userStore = new UserStore<ApplicationUser>(context);
-                var userManager = new UserManager<ApplicationUser>(userStore);
-                var newUser = new ApplicationUser
+            var passwordHash = new PasswordHasher();
+            string password = passwordHash.HashPassword("@Test123");
+            context.Users.AddOrUpdate(u => u.Email,
+                new ApplicationUser
                 {
                     UserName = "Deltaimpuls@hotmail.com",
-                    Email = "Deltaimpuls@hotmail.com"
-                };
-                userManager.Create(newUser, "@Test123");
-            }
+                    Email = "Deltaimpuls@hotmail.com",
+                    PasswordHash = password
+                });
+            //if(!(context.Users.Any(u => u.Email == "Deltaimpuls@hotmail.com")))
+            //{
+            //    var userStore = new UserStore<ApplicationUser>(context);
+            //    var userManager = new UserManager<ApplicationUser>(userStore);
+            //    var newUser = new ApplicationUser
+            //    {
+            //        UserName = "Deltaimpuls@hotmail.com",
+            //        Email = "Deltaimpuls@hotmail.com",
+            //        PasswordHash = "@Test123"
+            //    };
+            //    userManager.Create(newUser, "@Test123");
+            //    base.Seed(context);
+            //}
         }
     }
 }

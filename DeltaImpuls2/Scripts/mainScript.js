@@ -45,7 +45,7 @@ $('#categorieFilter').change(function () {
 
 $('#SearchString').keypress(function (e) {
     GetData();
-    if (e.which == 13) {
+    if (e.which === 13) {
         $.ajax({
             type: "GET",
             url: url,
