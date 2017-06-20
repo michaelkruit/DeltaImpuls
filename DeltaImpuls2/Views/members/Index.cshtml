@@ -29,10 +29,12 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().firstname)
+            @*@Html.DisplayNameFor(model => model.FirstOrDefault().firstname)*@
+            @Html.ActionLink("Voornaam", "Index", new { sortOrder = ViewBag.FirstNameSort, searchString = ViewBag.SearchValue, locationFilter = ViewBag.CurrentLocation, categorieFilter = ViewBag.CurrentCategorie })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().lastname)
+            @*@Html.DisplayNameFor(model => model.FirstOrDefault().lastname)*@
+            @Html.ActionLink("Achternaam", "Index", new { sortOrder = ViewBag.LastNameSort, searchString = ViewBag.SearchValue, locationFilter = ViewBag.CurrentLocation, categorieFilter = ViewBag.CurrentCategorie })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().insertion)
@@ -222,5 +224,5 @@
 </table>
 <div class="paginations">
     @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, searchString = ViewBag.SearchValue, locationFiler = ViewBag.CurrentLocation, categorieFilter = ViewBag.CurrentCategorie }))
+    new { page, searchString = ViewBag.SearchValue, locationFilter = ViewBag.CurrentLocation, categorieFilter = ViewBag.CurrentCategorie, sortOrder = ViewBag.CurrentSort }))
 </div>

@@ -28,13 +28,16 @@ namespace DeltaImpuls2.Controllers
         /// <param name="page">Int for knowing on wich page of the pagintion the user is on</param>
         /// <returns></returns>
         // GET: members
-        public ActionResult Index(string searchString, int? locationFilter, int? categorieFilter, int? page)
+        public ActionResult Index(string searchString, int? locationFilter, int? categorieFilter, int? page, string sortOrder)
         {
             var members = db.members.Include(m => m.categorie).Include(m => m.lj).Include(m => m.location).Include(m => m.ls);
 
             var seniorAmount = members.Where(m => m.categorie.age > 17).Count();
             var juniorAmount = members.Where(m => m.categorie.age < 18).Count();
 
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.FirstNameSort = string.IsNullOrEmpty(sortOrder) ? "firstname_desc" : "";
+            ViewBag.LastNameSort = sortOrder == "lastname_asc" ? "lastname_desc" : "lastname_asc";
             ViewBag.SearchValue = searchString;
             ViewBag.CurrentLocation = locationFilter;
             ViewBag.CurrentCategorie = categorieFilter;
@@ -42,6 +45,22 @@ namespace DeltaImpuls2.Controllers
             ViewBag.JuniorAmount = juniorAmount;
             ViewBag.location_ID = new SelectList(db.locations, "ID", "city");
             ViewBag.categorie_id = new SelectList(db.categorie, "ID", "name");
+
+            switch(sortOrder)
+            {
+                case "firstname_desc":
+                    members = members.OrderByDescending(m => m.firstname);
+                    break;
+                case "lastname_asc":
+                    members = members.OrderBy(m => m.lastname);
+                    break;
+                case "lastname_desc":
+                    members = members.OrderByDescending(m => m.lastname);
+                    break;
+                default:
+                    members = members.OrderBy(m => m.firstname);
+                    break;
+            }
 
             if (locationFilter.HasValue)
             {
@@ -87,7 +106,7 @@ namespace DeltaImpuls2.Controllers
             int pageSize = 10;
             int pageNumber = page ?? 1;
 
-            return View(members.OrderBy(m => m.firstname).ToPagedList(pageNumber, pageSize));
+            return View(members.ToPagedList(pageNumber, pageSize));
         }
 
         /// <summary>

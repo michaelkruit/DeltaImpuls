@@ -13,7 +13,7 @@ namespace UnitTestProject1.Controllers
         public void members_Index()
         {
             // Act
-            ViewResult result = controller.Index("", null, null, null) as ViewResult;
+            ViewResult result = controller.Index("", null, null, null, null) as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
