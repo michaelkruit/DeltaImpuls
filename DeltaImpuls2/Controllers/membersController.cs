@@ -61,9 +61,22 @@ namespace DeltaImpuls2.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                members = members.Where(m =>
-                m.firstname.Contains(searchString)
-                || m.lastname.Contains(searchString));
+                if(searchString.Contains(" "))
+                {
+                    string[] search = searchString.Split(' ');
+                    string firstName = search[0];
+                    string lastName = search[1];
+
+                    members = members.Where(m =>
+                        m.firstname.Contains(firstName)
+                        && m.lastname.Contains(lastName));
+                }
+                else
+                {
+                    members = members.Where(m =>
+                        m.firstname.Contains(searchString)
+                        || m.lastname.Contains(searchString));
+                }                
             }
 
             if (searchString != null)
