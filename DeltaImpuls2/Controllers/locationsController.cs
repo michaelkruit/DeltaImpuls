@@ -49,7 +49,7 @@ namespace DeltaImpuls2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,city,postcode,adres")] location location)
+        public ActionResult Create([Bind(Include = "ID,city,postcode,adres,housenumber,suffix")] location location)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace DeltaImpuls2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,city,postcode,adres")] location location)
+        public ActionResult Edit([Bind(Include = "ID,city,postcode,adres,housenumber,suffix")] location location)
         {
             if (ModelState.IsValid)
             {

@@ -14,7 +14,7 @@ namespace DeltaImpuls2.Models
     {
         public int ID { get; set; }
         [Required, DisplayName("Plaats"), StringLength(25)]
-        [RegularExpression(@"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð-]+$",
+        [RegularExpression(@"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$$",
             ErrorMessage = "Er is geen correcte plaats ingevoerd")]
         public string city { get; set; }
         [Required, DisplayName("Postcode")]
@@ -22,7 +22,15 @@ namespace DeltaImpuls2.Models
         [RegularExpression(@"^[1-9][0-9]{3}\s?[a-zA-Z]{2}$", ErrorMessage = "Postcode is niet correct ingevuld")]
         public string postcode { get; set; }
         [Required, DisplayName("Adres"), StringLength(25)]
+        [RegularExpression(@"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$",
+            ErrorMessage = "Er is geen correct adres ingevoerd")]
         public string adres { get; set; }
+        [Required, DisplayName("Huisnummer")]
+        public byte housenumber { get; set; }
+        [DisplayName("Toevoeging"), StringLength(5)]
+        [RegularExpression(@"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$",
+            ErrorMessage = "Er is geen correcte toevoeging ingevoerd")]
+        public string suffix { get; set; }
 
         public virtual ICollection<members> members { get; set; }
     }

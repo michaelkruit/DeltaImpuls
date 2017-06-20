@@ -36,10 +36,14 @@ namespace DeltaImpuls2.Models
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime membersince { get; set; }
         [Required, DisplayName("Adres"), StringLength(25)]
+        [RegularExpression(@"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$",
+            ErrorMessage = "Er is geen correct adres ingevoerd")]
         public string adres { get; set; }
         [Required, DisplayName("Huisnummer")]
         public byte housenumber { get; set; }
-        [DisplayName("Toevoeging")]
+        [DisplayName("Toevoeging"),StringLength(5)]
+        [RegularExpression(@"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$",
+            ErrorMessage = "Er is geen correcte toevoeging ingevoerd")]
         public string suffix { get; set; }
         [Required, DisplayName("Postcode")]
         [DataType(DataType.PostalCode), StringLength(7, MinimumLength = 4)]
