@@ -55,3 +55,4 @@ C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\Unit
 C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
 C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\UnitTestProject1\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\UnitTestProject1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\UnitTestProject1\bin\Debug\DeltaImpuls2.xml

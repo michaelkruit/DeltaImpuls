@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleSyndicate.Sandcastle</name>
+    </assembly>
+    <members>
+        <member name="T:SimpleSyndicate.Sandcastle.Content.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Sandcastle.Content"/> namespace contains helper and extension methods for working with content.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Sandcastle.Content.VersionHistory">
+            <summary>
+            Provides easy access to the contents of a version history file.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.Sandcastle.Content.VersionHistory.versionHistoryXml">
+            <summary>
+            The version history contents.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistory.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Sandcastle.Content.VersionHistory"/> class using the file at the specified <paramref name="path"/>.
+            </summary>
+            <param name="path">The version history file to use.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistory.LatestSectionAsText">
+            <summary>
+            Returns the contents of the latest section as text.
+            </summary>
+            <returns>The contents of the latest section</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistory.NodeAsText(System.Xml.XmlNode)">
+            <summary>
+            Returns the contents of the specified <paramref name="node"/> as text.
+            </summary>
+            <param name="node">The node.</param>
+            <returns>The contents of the specified <paramref name="node"/> as text.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistory.AddItemToText(System.String,System.String)">
+            <summary>
+            Adds the specified <paramref name="item"/> to the specified <paramref name="text"/>.
+            </summary>
+            <param name="text">Current text.</param>
+            <param name="item">Item to add.</param>
+            <returns>The current text with the item added to it.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistory.AddItemSeparatorToText(System.String)">
+            <summary>
+            Adds an item separator to the text.
+            </summary>
+            <param name="text">Current text.</param>
+            <returns>The current text with an item separator added to it.</returns>
+        </member>
+        <member name="P:SimpleSyndicate.Sandcastle.Content.VersionHistory.Path">
+            <summary>
+            Gets the path to the version history file.
+            </summary>
+            <value>Path to the version history file.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Sandcastle.Content.VersionHistory.FileName">
+            <summary>
+            Gets the filename of the version history file.
+            </summary>
+            <value>Version history filename.</value>
+        </member>
+        <member name="T:SimpleSyndicate.Sandcastle.Content.VersionHistoryHelpers">
+            <summary>
+            Helper methods for version history.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistoryHelpers.VersionHistoryExists(System.String)">
+            <summary>
+            Returns whether a version history exists in the specified <paramref name="path"/>.
+            </summary>
+            <param name="path">Path to version history file.</param>
+            <returns><c>true</c> if the version history exists; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistoryHelpers.VersionHistoryFilePath(System.String)">
+            <summary>
+            Returns the version history path for the version history found in the specified <paramref name="path"/>.
+            </summary>
+            <param name="path">Path to version history file.</param>
+            <returns>The full path of the version history file.</returns>
+            <exception cref="T:System.IO.FileNotFoundException">Thrown when no version history file can be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistoryHelpers.VersionHistoryFilePathInternal(System.String)">
+            <summary>
+            Returns the version history file for the version history found in the specified <paramref name="path"/>.
+            </summary>
+            <param name="path">Path to version history file.</param>
+            <returns>The full path of the found version history file, or <c>null</c> if it can't be found.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistoryHelpers.DetermineCommonPrefix(System.String)">
+            <summary>
+            Returns the common prefix in the specified path; this is based on the last directory in the path up to the
+            first period. E.g. for "C:\Some\Path\Test.Project\File.cs" it would be "Test".
+            </summary>
+            <param name="path">Path to process.</param>
+            <returns>The prefix.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistoryHelpers.DetermineProjectName(System.String)">
+            <summary>
+            Returns the project name in the specified path; this is the last directory in the path.
+            </summary>
+            <param name="path">Path to process.</param>
+            <returns>The project name.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistoryHelpers.DetermineSearchPath(System.String)">
+            <summary>
+            Returns the search path from the specified path.
+            </summary>
+            <param name="path">Path to process.</param>
+            <returns>Search path.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Sandcastle.Content.VersionHistoryHelpers.Find(System.String,System.String,System.String)">
+            <summary>
+            Finds the file with the specified <paramref name="fileName"/> in the specified <paramref name="directoryName"/> if it
+            exists in the specified <paramref name="path"/>.
+            </summary>
+            <param name="path">Path to search in.</param>
+            <param name="directoryName">Directory to find.</param>
+            <param name="fileName">File to find in directory.</param>
+            <returns>Path to the file, or <c>null</c> if it can't be found.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.Sandcastle.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Sandcastle"/> namespace contains helper and extension methods for working with Sandcastle classes.
+            </summary>
+        </member>
+    </members>
+</doc>

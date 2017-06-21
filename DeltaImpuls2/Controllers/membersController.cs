@@ -26,6 +26,7 @@ namespace DeltaImpuls2.Controllers
         /// <param name="locationFilter">Int for filtering on location</param>
         /// <param name="categorieFilter">Int for filtering on categorie</param>
         /// <param name="page">Int for knowing on wich page of the pagintion the user is on</param>
+        /// <param name="sortOrder">String for sorting the table</param>
         /// <returns></returns>
         // GET: members
         public ActionResult Index(string searchString, int? locationFilter, int? categorieFilter, int? page, string sortOrder)

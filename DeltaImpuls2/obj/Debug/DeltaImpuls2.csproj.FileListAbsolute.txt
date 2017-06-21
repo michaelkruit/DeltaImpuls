@@ -87,3 +87,8 @@ C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\Delt
 C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.Migrations.initial.resources
 C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.csproj.GenerateResource.Cache
 C:\Users\micha\OneDrive\Documenten\Visual Studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\obj\Debug\DeltaImpuls2.Migrations.login.InitialCreate.resources
+C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\DeltaImpuls2.XML
+C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\SimpleSyndicate.dll
+C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\SimpleSyndicate.Sandcastle.dll
+C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\SimpleSyndicate.xml
+C:\Users\micha\onedrive\documenten\visual studio 2015\Projects\DeltaImpuls2\DeltaImpuls2\bin\SimpleSyndicate.Sandcastle.xml

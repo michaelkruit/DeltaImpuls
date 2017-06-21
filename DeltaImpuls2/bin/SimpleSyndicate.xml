@@ -1,0 +1,1700 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleSyndicate</name>
+    </assembly>
+    <members>
+        <member name="T:SimpleSyndicate.AttributeHelpers">
+            <summary>
+            Helper methods for working with <see cref="T:System.Attribute"/>s.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.AttributeHelpers.GetAttribute(System.Linq.Expressions.Expression{System.Action},System.Type)">
+            <overloads>
+            <summary>Gets the attribute of the specified type from the specified expression.</summary>
+            </overloads>
+            <summary>
+            Gets the attribute of type <paramref name="type"/> from the specified <paramref name="expression"/>.
+            </summary>
+            <param name="expression">Lambda expression.</param>
+            <param name="type"><see cref="T:System.Type"/> of attribute to find.</param>
+            <returns>The attribute of the specified <paramref name="type"/>, or <c>null</c> if it doesn't exist.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="expression"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.AttributeHelpers.GetAttribute``2(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Gets the attribute of type <typeparamref name="TAttribute"/> from the property specified by <paramref name="expression"/>.
+            </summary>
+            <example>
+            <code language="cs">
+            var model = new SomeMvcController();
+            var attribute = AttributeHelpers.GetAttribute&lt;SomeMvcController, ViewResult&gt;(x =&gt; x.Index(), typeof(AllowAnonymousAttribute));
+            </code>
+            </example>
+            <typeparam name="TClass">Class that contains a property.</typeparam>
+            <typeparam name="TAttribute">Attribute to find.</typeparam>
+            <param name="expression">Lambda expression to the property.</param>
+            <returns>The specified attribute, or <c>null</c> if it doesn't exist on the property.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="expression"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.AttributeHelpers.GetAttribute``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Type)">
+            <summary>
+            Gets the attribute of type <paramref name="type"/> from the method specified by <paramref name="expression"/>.
+            </summary>
+            <example>
+            <code language="cs">
+            var model = new SomeMvcController();
+            var attribute = AttributeHelpers.GetAttribute&lt;SomeMvcController, ViewResult&gt;(x =&gt; x.Index(), typeof(AllowAnonymousAttribute));
+            </code>
+            </example>
+            <typeparam name="TClass">Class that defines the method.</typeparam>
+            <typeparam name="TValue">Return type of the method.</typeparam>
+            <param name="expression">Lambda expression to the method.</param>
+            <param name="type"><see cref="T:System.Type"/> of attribute to find.</param>
+            <returns>The attribute of the specified <paramref name="type"/>, or <c>null</c> if it doesn't exist on the method.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="expression"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.AttributeHelpers.GetAttribute``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Type)">
+            <summary>
+            Gets the attribute of type <paramref name="type"/> from the property specified by <paramref name="expression"/>.
+            </summary>
+            <example>
+            <code language="cs">
+            var model = new VersionHistoryItem();
+            var attribute = AttributeHelpers.GetAttribute(() =&gt; model.MajorVersion, typeof(KeyAttribute));
+            </code>
+            </example>
+            <typeparam name="TProperty">Property type.</typeparam>
+            <param name="expression">Lambda expression to the property.</param>
+            <param name="type"><see cref="T:System.Type"/> of attribute to find.</param>
+            <returns>The attribute of the specified <paramref name="type"/>, or <c>null</c> if it doesn't exist on the property.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="expression"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.AttributeHelpers.GetAttributeValue``1(System.Object,System.Type)">
+            <summary>
+            Returns the value of the property on the specified <paramref name="instance"/> that has an attribute of type <paramref name="type"/>.
+            </summary>
+            <example>
+            <code language="cs">
+            var versionHistoryItem = new VersionHistoryItem();
+            var value = AttributeHelpers.GetAttributeValue&lt;int&gt;(versionHistoryItem, typeof(KeyAttribute));
+            // value holds the value of versionHistoryItem.Id
+            </code>
+            </example>
+            <typeparam name="TType">Property type.</typeparam>
+            <param name="instance">Object to retrieve property value from.</param>
+            <param name="type">Attribute type to look for.</param>
+            <returns>The value, as <typeparamref name="TType"/> of the property on <paramref name="instance"/> that has an attribute of type <paramref name="type"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="instance"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.AttributeHelpers.HasAttribute(System.Linq.Expressions.Expression{System.Action},System.Type)">
+            <overloads>
+            <summary>Returns whether the specified specified expression has an attribute of the specified type.</summary>
+            </overloads>
+            <summary>
+            Returns whether the specified <paramref name="expression"/> has an attribute of the specified <paramref name="type"/>.
+            </summary>
+            <param name="expression">Lambda expression.</param>
+            <param name="type"><see cref="T:System.Type"/> of attribute to find.</param>
+            <returns><c>true</c> if the <paramref name="expression"/> has the attribute, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.AttributeHelpers.HasAttribute``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Type)">
+            <summary>
+            Returns whether the method specified by <paramref name="expression"/> has an attribute of type <paramref name="type"/>.
+            </summary>
+            <example>
+            <code language="cs">
+            var model = new SomeMvcController();
+            var hasAttribute = AttributeHelpers.HasAttribute&lt;SomeMvcController, ViewResult&gt;(x =&gt; x.Index(), typeof(AllowAnonymousAttribute));
+            </code>
+            </example>
+            <typeparam name="TClass">Class that defines the method.</typeparam>
+            <typeparam name="TValue">Return type of the method.</typeparam>
+            <param name="expression">Lambda expression to the method.</param>
+            <param name="type"><see cref="T:System.Type"/> of attribute to find.</param>
+            <returns><c>true</c> if the method has the attribute, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.AttributeHelpers.HasAttribute``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Type)">
+            <summary>
+            Returns where the property specified by <paramref name="expression"/> has an attribute of type <paramref name="type"/> .
+            </summary>
+            <example>
+            <code language="cs">
+            var model = new VersionHistoryItem();
+            var hasAttribute = AttributeHelpers.HasAttribute(() =&gt; model.MajorVersion, typeof(KeyAttribute));
+            </code>
+            </example>
+            <typeparam name="TProperty">Property type.</typeparam>
+            <param name="expression">Lambda expression to the property.</param>
+            <param name="type"><see cref="T:System.Type"/> of attribute to find.</param>
+            <returns><c>true</c> if the property has the attribute, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.Audit`2">
+            <summary>
+            Provides auditing functionality, intended as a direct replacement for DbContext.SaveChanges, and saves changes as
+            normal, but also saves an audit trail; the trail is a list of all objects that have changed, and all the properties
+            on them that have changed. Further details on this, including a worked example for MVC, can be found in the
+            <a href="http://gazooka_g72.bitbucket.org/SimpleSyndicate/html/f3e0dd41-c594-400a-a806-e94419d9e2cb.htm">online documentation</a>,
+            and this is essentially reproduced below in the example.
+            </summary>
+            <example>
+            <code language="cs" source="..\..\SimpleSyndicate\SimpleSyndicate.Help.Examples\Auditing\Audit.cs"/>
+            </example>
+            <typeparam name="TIdentityDbContext">An <see cref="T:Microsoft.AspNet.Identity.EntityFramework.IdentityDbContext"/> derived type.</typeparam>
+            <typeparam name="TIdentityUser">An <see cref="T:Microsoft.AspNet.Identity.EntityFramework.IdentityUser"/> derived type.</typeparam>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.Audit`2.SaveChanges(`0,SimpleSyndicate.Auditing.IAuditUser)">
+            <summary>
+            Saves all the changes, creating an audit trail at the same time.
+            </summary>
+            <param name="applicationDbContext">A <typeparamref name="TIdentityDbContext"/> instance.</param>
+            <param name="auditUser">An instance that implements <see cref="T:SimpleSyndicate.Auditing.IAuditUser"/>.</param>
+            <returns>The number of changes saved.</returns>
+            <example>
+            <code language="cs" source="..\..\SimpleSyndicate\SimpleSyndicate.Help.Examples\Auditing\Audit.cs"/>
+            </example>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.AuditingHelpers">
+            <summary>
+            Helper methods for auditing.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditingHelpers.TrimToLength(System.String,System.Int32)">
+            <summary>
+            Trims a string to the specified length.
+            </summary>
+            <param name="value">String to trim.</param>
+            <param name="length">Maximum length of the string.</param>
+            <returns>The trimmed string; if the input was <c>null</c>, the returned value is also <c>null</c>.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditingHelpers.ToInt(System.String)">
+            <summary>
+            Converts the specified <paramref name="value"/> to an <see cref="T:System.Int32"/>, or <c>null</c> if it can't be converted.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <returns>The converted value, or <c>null</c> if it couldn't be converted.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.AuditObjectChangeFactory">
+            <summary>
+            Factory class for <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/>s.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditObjectChangeFactory.Create(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>
+            Gets an <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/> for the specified <paramref name="entityEntry"/>.
+            </summary>
+            <param name="entityEntry">A <see cref="T:System.Data.Entity.Infrastructure.DbEntityEntry"/> instance.</param>
+            <returns>An <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/>.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.AuditChangeSetHelpers">
+            <summary>
+            Helper methods for <see cref="T:SimpleSyndicate.Models.AuditChangeSet"/>.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditChangeSetHelpers.UserId(SimpleSyndicate.Auditing.IAuditUser)">
+            <summary>
+            Gets the id of the user saving changes; if the id is longer than the audit data store can hold, it will be trimmed.
+            </summary>
+            <param name="auditUser">An <see cref="T:SimpleSyndicate.Auditing.IAuditUser"/> that provides the user details.</param>
+            <returns>The id of the user saving changes.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="auditUser"/> is <c>null</c>.</exception>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.AuditPropertyChangesFactory">
+            <summary>
+            Factory class for <see cref="T:SimpleSyndicate.Models.AuditPropertyChange"/>s.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditPropertyChangesFactory.Create(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>
+            Gets a collection of the changes for the specified <paramref name="entityEntry"/>.
+            </summary>
+            <param name="entityEntry">A <see cref="T:System.Data.Entity.Infrastructure.DbEntityEntry"/> instance.</param>
+            <returns>A collection of the changes.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.MissingKeyException">
+            <summary>
+            Exception thrown when an attempt is made to audit an object that doesn't have a key defined.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.MissingKeyException.#ctor">
+            <overloads>
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Auditing.MissingKeyException"/> class.
+            </summary>
+            </overloads>
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Auditing.MissingKeyException"/> class.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.MissingKeyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Auditing.MissingKeyException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.MissingKeyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Auditing.MissingKeyException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a <c>null</c> reference (<c>Nothing</c> in Visual Basic) if no inner exception is specified. </param>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.MissingKeyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Auditing.MissingKeyException"/> class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Auditing"/> namespace contains classes and interfaces related to auditing entities.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.BuiltInTypeHelpers">
+            <summary>
+            Helper methods for working with <see cref="T:System.Type"/>s.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.BuiltInTypeHelpers.TypeAliases">
+            <summary>
+            Built-in type aliases, keyed on <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.BuiltInTypeHelpers.TypeNameAliases">
+            <summary>
+            Built-in type aliases, keyed on the type name.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.BuiltInTypeHelpers.BuiltInTypeName(System.String)">
+            <summary>
+            Returns the equivalent built-in type name for the specified <paramref name="name"/> if it has one, or the <paramref name="name"/> if
+            it doesn't; e.g. <c>String</c> would be returned as <c>string</c>, or <c>Boolean</c> would be returned as <c>bool</c>.
+            </summary>
+            <param name="name">The name to find the built-in equivalent for.</param>
+            <returns>The equivalent built-in type name, or the <paramref name="name"/> if there's no equivalent.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.BuiltInTypeHelpers.BuiltInTypeName(System.Type)">
+            <summary>
+            Returns the equivalent built-in type name for the specified <paramref name="type"/> if it has one, or the type's name if it doesn't; e.g. a
+            <c>System.String</c> type would return <c>string</c>, or a <c>System.Boolean</c> type would return <c>bool</c>.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to find the built-in equivalent for.</param>
+            <returns>The equivalent built-in type name, or the <paramref name="type"/>'s name if there's no equivalent.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.ByteExtensions">
+            <summary>
+            The <see cref="T:SimpleSyndicate.ByteExtensions"/> class contains methods that extend the <see cref="T:System.Byte"/> class.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.ByteExtensions.ToASCII(System.Byte[])">
+            <summary>
+            Decodes the contents as an ASCII string.
+            </summary>
+            <param name="array">The <see cref="T:System.Byte"/> array instance that this method extends.</param>
+            <returns>The contents decoded as an ASCII string.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.ByteExtensions.ToBigEndianUnicode(System.Byte[])">
+            <summary>
+            Decodes the contents as a Big Endian Unicode string.
+            </summary>
+            <param name="array">The <see cref="T:System.Byte"/> array instance that this method extends.</param>
+            <returns>The contents decoded as a Big Endian Unicode string.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.ByteExtensions.ToUnicode(System.Byte[])">
+            <summary>
+            Decodes the contents as a Unicode string.
+            </summary>
+            <param name="array">The <see cref="T:System.Byte"/> array instance that this method extends.</param>
+            <returns>The contents decoded as a Unicode string.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.ByteExtensions.ToUTF32(System.Byte[])">
+            <summary>
+            Decodes the contents as a UTF32 string.
+            </summary>
+            <param name="array">The <see cref="T:System.Byte"/> array instance that this method extends.</param>
+            <returns>The contents decoded as a UTF32 string.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.ByteExtensions.ToUTF7(System.Byte[])">
+            <summary>
+            Decodes the contents as a UTF7 string.
+            </summary>
+            <param name="array">The <see cref="T:System.Byte"/> array instance that this method extends.</param>
+            <returns>The contents decoded as a UTF7 string.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.ByteExtensions.ToUTF8(System.Byte[])">
+            <summary>
+            Decodes the contents as a UTF8 string.
+            </summary>
+            <param name="array">The <see cref="T:System.Byte"/> array instance that this method extends.</param>
+            <returns>The contents decoded as a UTF8 string.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.ByteExtensions.ToString(System.Byte[],System.String)">
+            <summary>
+            Decodes the contents to a string, trying different encodings until it finds one that results in a string that starts with the specified <paramref name="expectedToStartWith"/>,
+            which would indicate a successful decoding.
+            </summary>
+            <param name="array">The <see cref="T:System.Byte"/> array instance that this method extends.</param>
+            <param name="expectedToStartWith">What the contents are expected to start with if successfully decoded.</param>
+            <returns>The contents decoded to a string.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when none of the encodings result in a string that starts with <paramref name="expectedToStartWith"/>.</exception>
+        </member>
+        <member name="T:SimpleSyndicate.Collections.ObjectModel.CollectionExtensions">
+            <summary>
+            The <see cref="T:SimpleSyndicate.Collections.ObjectModel.CollectionExtensions"/> class contains methods that extend the <see cref="T:System.Collections.ObjectModel.Collection`1"/> class.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Collections.ObjectModel.CollectionExtensions.RemoveByTypeName``1(System.Collections.ObjectModel.Collection{``0},System.String)">
+            <summary>
+            Removes the first occurrence of an item with a type of the specified <paramref name="typeNameToRemove"/>.
+            </summary>
+            <typeparam name="T">The type of elements in the collection.</typeparam>
+            <param name="collection">The <see cref="T:System.Collections.ObjectModel.Collection`1"/> instance that this method extends.</param>
+            <param name="typeNameToRemove">Name of type to remove.</param>
+            <returns><c>true</c> if an item with specified <paramref name="typeNameToRemove"/> was successfully removed; <c>false</c> otherwise. This method also returns <c>false</c> if no item was found in the collection.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="collection"/> or <paramref name="typeNameToRemove"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="typeNameToRemove"/> is empty or whitespace.</exception>
+        </member>
+        <member name="T:SimpleSyndicate.Collections.ObjectModel.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Collections.ObjectModel"/> namespace contains helper and extension methods for working with <see cref="N:System.Collections.ObjectModel"/> classes.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Diagnostics.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Diagnostics"/> namespace contains helper and extension methods for working with <see cref="N:System.Diagnostics"/> classes.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Diagnostics.ProcessExitInfo">
+            <summary>
+            Specifies a set of values holding the details of a process that ran.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Diagnostics.ProcessExitInfo.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Diagnostics.ProcessExitInfo"/> class with the specified <paramref name="standardError"/> and <paramref name="standardOutput"/>.
+            </summary>
+            <param name="standardError">Standard error.</param>
+            <param name="standardOutput">Standard output.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Diagnostics.ProcessExitInfo.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Diagnostics.ProcessExitInfo"/> class with the specified <paramref name="standardError"/> and <paramref name="standardOutput"/>.
+            </summary>
+            <param name="standardError">Standard error.</param>
+            <param name="standardOutput">Standard output.</param>
+            <param name="exception">Exception caught whilst the process ran.</param>
+        </member>
+        <member name="P:SimpleSyndicate.Diagnostics.ProcessExitInfo.Exception">
+            <summary>
+            Gets any exception caught whilst the process ran; if no exception was caught, this will be <c>null</c>.
+            </summary>
+            <value>Exception caught whilst the process ran; if no exception was caught, this will be <c>null</c>.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Diagnostics.ProcessExitInfo.StandardError">
+            <summary>
+            Gets the standard error contents from the process ran.
+            </summary>
+        </member>
+        <member name="P:SimpleSyndicate.Diagnostics.ProcessExitInfo.StandardOutput">
+            <summary>
+            Gets the standard output contents from the process ran.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Diagnostics.ProcessHelpers">
+            <summary>
+            Helper methods for working with processes.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Diagnostics.ProcessHelpers.RunConsoleApp(System.String,System.String)">
+            <summary>
+            Runs a console application.
+            </summary>
+            <param name="workingDirectory">Working directory.</param>
+            <param name="fileName">Application to run.</param>
+            <returns>The results of the run.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Diagnostics.ProcessHelpers.RunConsoleApp(System.String,System.String,System.String)">
+            <summary>
+            Runs a console application.
+            </summary>
+            <param name="workingDirectory">Working directory.</param>
+            <param name="fileName">Application to run.</param>
+            <param name="arguments">Arguments for the application.</param>
+            <returns>The results of the run.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.EnumExtensions">
+            <summary>
+            The <see cref="T:SimpleSyndicate.EnumExtensions"/> class contains methods that extend the <see cref="T:System.Enum"/> class.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.EnumExtensions.Description(System.Enum)">
+            <summary>
+            Returns the <see cref="T:System.Enum"/> description attribute.
+            </summary>
+            <param name="en">The <see cref="T:System.Enum"/> instance that this method extends.</param>
+            <returns>The <see cref="T:System.Enum"/> description.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.IO.DirectoryHelpers">
+            <summary>
+            Helper methods for working with <see cref="T:System.IO.Directory"/>s.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.ContainsDirectory(System.String,System.String)">
+            <summary>
+            Returns whether the specified <paramref name="path"/> contains a directory with the specified <paramref name="name"/>.
+            </summary>
+            <param name="path">The path to search in.</param>
+            <param name="name">The string to compare to each directory name.</param>
+            <returns><c>true</c> if the specified <paramref name="path"/> contains a directory with the specified <paramref name="name"/>; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.ContainsFile(System.String,System.String)">
+            <summary>
+            Returns whether the specified <paramref name="path"/> contains a file with the specified <paramref name="name"/>.
+            </summary>
+            <param name="path">The path to search in.</param>
+            <param name="name">The string to compare to each file name.</param>
+            <returns><c>true</c> if the specified <paramref name="path"/> contains a file with the specified <paramref name="name"/>; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.ContainsFile(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns whether the specified <paramref name="path"/> contains a file with the specified <paramref name="name"/>.
+            </summary>
+            <param name="path">The path to search in.</param>
+            <param name="name">The string to compare to each file name.</param>
+            <param name="recurse"><c>true</c> to do a recursive search; <c>false</c> otherwise.</param>
+            <returns><c>true</c> if the specified <paramref name="path"/> contains a file with the specified <paramref name="name"/>; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.ContainsFileWithNameThatEndsWith(System.String,System.String)">
+            <summary>
+            Returns whether the specified <paramref name="path"/> contains a file with a name that ends in <paramref name="endsWith"/>.
+            </summary>
+            <param name="path">THe path to search in.</param>
+            <param name="endsWith">The string to compare to each file name.</param>
+            <returns><c>true</c> if the specified <paramref name="path"/> contains a file with a name that ends in <paramref name="endsWith"/>; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.EndsWithDirectorySeparator(System.String)">
+            <summary>
+            Returns whether the specified <paramref name="path"/> ends with a directory separator.
+            </summary>
+            <param name="path">Path to check.</param>
+            <returns><c>true</c> if the <paramref name="path"/> ends with a directory separator; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.FileOrFirstMatchingFile(System.String,System.String)">
+            <summary>
+            Returns the specified <paramref name="path"/> if it is a file that exists, otherwise uses <paramref name="path"/> as a directory and returns the first
+            file found that ends with the specified <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">File or path to examine.</param>
+            <param name="searchPattern">Pattern to match against.</param>
+            <returns>The provided <paramref name="path"/> or the first file found (including the path) that matches the <paramref name="searchPattern"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> are empty or whitespace.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">Thrown when no file is found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.FileOrFirstMatchingFile(System.String,System.String,System.Func{System.Exception,System.Exception})">
+            <summary>
+            Returns the specified <paramref name="path"/> if it is a file that exists, otherwise uses <paramref name="path"/> as a directory and returns the first
+            file found that ends with the specified <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">File or path to examine.</param>
+            <param name="searchPattern">Pattern to match against.</param>
+            <param name="wrapperExceptionFactory">Factory method that will create the exception to throw if the file cannot be found; a <see cref="T:System.IO.FileNotFoundException"/> exception is passed to the method.</param>
+            <returns>The provided <paramref name="path"/> or the first file found (including the path) that matches the <paramref name="searchPattern"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> are empty or whitespace.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.FileOrFirstMatchingFileOrNull(System.String,System.String)">
+            <summary>
+            Returns the specified <paramref name="path"/> if it is a file that exists, otherwise uses <paramref name="path"/> as a directory and returns the first
+            file found that ends with the specified <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">File or path to examine.</param>
+            <param name="searchPattern">Pattern to match against.</param>
+            <returns>The provided <paramref name="path"/> or the first file found (including the path) that matches the <paramref name="searchPattern"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> are empty or whitespace.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.LastDirectoryName(System.String)">
+            <summary>
+            Returns the last directory name in the specified <paramref name="path"/>; note that the <paramref name="path"/> must not include the filename.
+            </summary>
+            <param name="path">Path, not including the filename, to process.</param>
+            <returns>The last directory name in the <paramref name="path"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.LastDirectoryName(System.String,System.Boolean)">
+            <summary>
+            Returns the last directory name in the specified <paramref name="path"/>.
+            </summary>
+            <param name="path">Path to process.</param>
+            <param name="pathIncludesFileName"><c>true</c> if the <paramref name="path"/> includes the file name; <c>false</c> otherwise.</param>
+            <returns>The last directory name in the <paramref name="path"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.DirectoryHelpers.PathIfContainsFile(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the path if a specified <paramref name="path"/> contains a file with the specified <paramref name="name"/>.
+            </summary>
+            <param name="path">The path to search in.</param>
+            <param name="name">The string to compare to each file name.</param>
+            <param name="recurse"><c>true</c> to do a recursive search; <c>false</c> otherwise.</param>
+            <returns>The path, or <c>null</c> if it can't be found.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.IO.FileHelpers">
+            <summary>
+            Helper methods for working with files.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ChangeExtension(System.String,System.String)">
+            <summary>
+            Changes the extension of a file.
+            </summary>
+            <param name="path">File to change.</param>
+            <param name="newExtension">New file extension.</param>
+            <exception cref="T:System.IO.FileNotFoundException">Thrown when the file to change cannot be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyText(System.String,System.Func{System.String,System.String})">
+            <summary>
+            Modifies a file by performing the specified operation on its contents.
+            </summary>
+            <param name="path">File to modify.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <returns><c>true</c> if any modification occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="operation"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyText(System.String,System.Func{System.String,System.String},System.Text.Encoding)">
+            <summary>
+            Modifies a file by performing the specified operation on its contents.
+            </summary>
+            <param name="path">File to modify.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any modification occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="operation"/> or <paramref name="encoding"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyText(System.String,System.Func{System.String,System.String},System.Action{System.String,System.String,System.String})">
+            <summary>
+            Modifies a file by performing the specified operation on its contents.
+            </summary>
+            <param name="path">File to modify.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="postOperation">Operation to perform after the file has been operated on; the path, old contents and new contexts are passed in.</param>
+            <returns><c>true</c> if any modification occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="operation"/> or <paramref name="postOperation"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyText(System.String,System.Func{System.String,System.String},System.Action{System.String,System.String,System.String},System.Text.Encoding)">
+            <summary>
+            Modifies a file by performing the specified operation on its contents.
+            </summary>
+            <param name="path">File to modify.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="postOperation">Operation to perform after the file has been operated on; the path, old contents and new contexts are passed in.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any modification occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="operation"/> or <paramref name="encoding"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyText(System.String,System.Func{System.String,System.String},System.String)">
+            <summary>
+            Modifies file(s) by performing the specified operation on the contents of files found from the specified <paramref name="path"/> and <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">Path to start the search at.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="searchPattern">Search pattern; if <c>null</c> or empty all files are processed.</param>
+            <returns><c>true</c> if any modifications occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="operation"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown when <paramref name="path"/> can't be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyText(System.String,System.Func{System.String,System.String},System.String,System.Text.Encoding)">
+            <summary>
+            Modifies file(s) by performing the specified operation on the contents of files found from the specified <paramref name="path"/> and <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">Path to start the search at.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="searchPattern">Search pattern; if <c>null</c> or empty all files are processed.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any modifications occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="operation"/> or <paramref name="encoding"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown when <paramref name="path"/> can't be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyText(System.String,System.Func{System.String,System.String},System.String,System.Action{System.String,System.String,System.String})">
+            <summary>
+            Modifies file(s) by performing the specified operation on the contents of files found from the specified <paramref name="path"/> and <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">Path to start the search at.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="searchPattern">Search pattern; if <c>null</c> or empty all files are processed.</param>
+            <param name="postOperation">Operation to perform after the file has been operated on; the path, old contents and new contexts are passed in.</param>
+            <returns><c>true</c> if any modifications occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="operation"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown when <paramref name="path"/> can't be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyText(System.String,System.Func{System.String,System.String},System.String,System.Action{System.String,System.String,System.String},System.Text.Encoding)">
+            <summary>
+            Modifies file(s) by performing the specified operation on the contents of files found from the specified <paramref name="path"/> and <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">Path to start the search at.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="searchPattern">Search pattern; if <c>null</c> or empty all files are processed.</param>
+            <param name="postOperation">Operation to perform after the file has been operated on; the path, old contents and new contexts are passed in.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any modifications occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="operation"/> or <paramref name="encoding"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown when <paramref name="path"/> can't be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.PrependText(System.String,System.String)">
+            <summary>
+            Prepends the specified file with the specified <paramref name="contents"/>, unless the file already starts with <paramref name="contents"/>, in which case it is left unchanged.
+            </summary>
+            <param name="path">File to prepend.</param>
+            <param name="contents">The string to prepend the file with.</param>
+            <returns><c>true</c> if the file was prepended; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="contents"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.PrependText(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            Prepends the specified file with the specified <paramref name="contents"/>, unless the file already starts with <paramref name="contents"/>, in which case it is left unchanged.
+            </summary>
+            <param name="path">File to prepend.</param>
+            <param name="contents">The string to prepend the file with.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if the file was prepended; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="contents"/> or <paramref name="encoding"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ReplaceText(System.String,System.String,System.String)">
+            <summary>
+            Replaces all occurrences of the specified <paramref name="oldValue"/> with <paramref name="newValue"/> in the specified file.
+            </summary>
+            <param name="path">File to change.</param>
+            <param name="oldValue">The string to be replaced.</param>
+            <param name="newValue">The string to replace all occurrences of <paramref name="oldValue"/>.</param>
+            <returns><c>true</c> if any replaces occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="oldValue"/> or <paramref name="newValue"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace, or <paramref name="oldValue"/> is empty.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ReplaceText(System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            Replaces all occurrences of the specified <paramref name="oldValue"/> with <paramref name="newValue"/> in the specified file.
+            </summary>
+            <param name="path">File to change.</param>
+            <param name="oldValue">The string to be replaced.</param>
+            <param name="newValue">The string to replace all occurrences of <paramref name="oldValue"/>.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any replaces occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="oldValue"/>, <paramref name="newValue"/> or <paramref name="encoding"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace, or <paramref name="oldValue"/> is empty.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ReplaceText(System.String,System.String,System.String,System.String)">
+            <summary>
+            Replaces all occurrences of the specified <paramref name="oldValue"/> with <paramref name="newValue"/> in the files
+            found from the specified <paramref name="path"/> and <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">Path to start search at.</param>
+            <param name="oldValue">The string to be replaced.</param>
+            <param name="newValue">The string to replace all occurrences of <paramref name="oldValue"/>.</param>
+            <param name="searchPattern">Search pattern; if <c>null</c> or empty all files are processed.</param>
+            <returns><c>true</c> if any replaces occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="oldValue"/> or <paramref name="newValue"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace, or <paramref name="oldValue"/> is empty.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown when <paramref name="path"/> can't be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ReplaceText(System.String,System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            Replaces all occurrences of the specified <paramref name="oldValue"/> with <paramref name="newValue"/> in the files
+            found from the specified <paramref name="path"/> and <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">Path to start search at.</param>
+            <param name="oldValue">The string to be replaced.</param>
+            <param name="newValue">The string to replace all occurrences of <paramref name="oldValue"/>.</param>
+            <param name="searchPattern">Search pattern; if <c>null</c> or empty all files are processed.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any replaces occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="oldValue"/>,  <paramref name="newValue"/> or <paramref name="encoding"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace, or <paramref name="oldValue"/> is empty.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown when <paramref name="path"/> can't be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ReplaceText(System.String,System.String,System.String,System.String,System.Action{System.String,System.String,System.String})">
+            <summary>
+            Replaces all occurrences of the specified <paramref name="oldValue"/> with <paramref name="newValue"/> in the files
+            found from the specified <paramref name="path"/> and <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">Path to start search at.</param>
+            <param name="oldValue">The string to be replaced.</param>
+            <param name="newValue">The string to replace all occurrences of <paramref name="oldValue"/>.</param>
+            <param name="searchPattern">Search pattern; if <c>null</c> or empty all files are processed.</param>
+            <param name="postOperation">Operation to perform after the file has been operated on; the path, old contents and new contexts are passed in.</param>
+            <returns><c>true</c> if any replaces occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="oldValue"/>, <paramref name="newValue"/> or <paramref name="postOperation"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace, or <paramref name="oldValue"/> is empty.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown when <paramref name="path"/> can't be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ReplaceText(System.String,System.String,System.String,System.String,System.Action{System.String,System.String,System.String},System.Text.Encoding)">
+            <summary>
+            Replaces all occurrences of the specified <paramref name="oldValue"/> with <paramref name="newValue"/> in the files
+            found from the specified <paramref name="path"/> and <paramref name="searchPattern"/>.
+            </summary>
+            <param name="path">Path to start search at.</param>
+            <param name="oldValue">The string to be replaced.</param>
+            <param name="newValue">The string to replace all occurrences of <paramref name="oldValue"/>.</param>
+            <param name="searchPattern">Search pattern; if <c>null</c> or empty all files are processed.</param>
+            <param name="postOperation">Operation to perform after the file has been operated on; the path, old contents and new contexts are passed in.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any replaces occurred; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/>, <paramref name="oldValue"/>,  <paramref name="newValue"/>, <paramref name="encoding"/> or <paramref name="postOperation"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is empty or whitespace, or <paramref name="oldValue"/> is empty.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown when <paramref name="path"/> can't be found.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyTextInternal(System.String,System.Func{System.String,System.String},System.Action{System.String,System.String,System.String},System.Text.Encoding)">
+            <summary>
+            Modifies a file by performing the specified operation on its contents.
+            </summary>
+            <param name="path">File to modify.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="postOperation">Operation to perform after the file has been operated on; the path, old contents and new contexts are passed in.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any modification occurred; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.IO.FileHelpers.ModifyTextInternal(System.String,System.Func{System.String,System.String},System.String,System.Action{System.String,System.String,System.String},System.Text.Encoding)">
+            <summary>
+            Modifies files by performing the specified operation on the contents of files found from the specified path and search pattern.
+            </summary>
+            <param name="path">Path to start the search at.</param>
+            <param name="operation">Operation to perform on the file contents; the existing contents are passed in, and the modified ones are returned.</param>
+            <param name="searchPattern">Search pattern.</param>
+            <param name="postOperation">Operation to perform after the file has been operated on; the path, old contents and new contexts are passed in.</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns><c>true</c> if any modifications occurred; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.IO.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.IO"/> namespace contains helper and extension methods for working with <see cref="N:System.IO"/> classes.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.AuditChangeSetDataAnnotations.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Models.DataAnnotations.AuditChangeSetDataAnnotations"/> namespace contains classes that hold data annotations for the <see cref="T:SimpleSyndicate.Models.AuditChangeSet"/> model.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.AuditChangeSetDataAnnotations.UserId">
+            <summary>
+            Data annotations for <see cref="P:SimpleSyndicate.Models.AuditChangeSet.UserId"/>
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.Models.DataAnnotations.AuditChangeSetDataAnnotations.UserId.MaxLength">
+            <summary>
+            Maximum length of <see cref="P:SimpleSyndicate.Models.AuditChangeSet.UserId"/>.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations.KeyValue">
+            <summary>
+            Data annotations for <see cref="P:SimpleSyndicate.Models.AuditObjectChange.KeyValue"/>
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations.KeyValue.MaxLength">
+            <summary>
+            Maximum length of <see cref="P:SimpleSyndicate.Models.AuditObjectChange.KeyValue"/>.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations"/> namespace contains classes that hold data annotations for the <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/> model.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations.Type">
+            <summary>
+            Data annotations for <see cref="P:SimpleSyndicate.Models.AuditObjectChange.ChangeType"/>
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations.Type.MinLength">
+            <summary>
+            Minimum length of <see cref="P:SimpleSyndicate.Models.AuditObjectChange.ChangeType"/>.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations.Type.MaxLength">
+            <summary>
+            Maximum length of <see cref="P:SimpleSyndicate.Models.AuditObjectChange.ChangeType"/>.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations.TypeName">
+            <summary>
+            Data annotations for <see cref="P:SimpleSyndicate.Models.AuditObjectChange.TypeName"/>
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.Models.DataAnnotations.AuditObjectChangeDataAnnotations.TypeName.MaxLength">
+            <summary>
+            Maximum length of <see cref="P:SimpleSyndicate.Models.AuditObjectChange.TypeName"/>.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.AuditPropertyChangeDataAnnotations.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Models.DataAnnotations.AuditPropertyChangeDataAnnotations"/> namespace contains classes that hold data annotations for the <see cref="T:SimpleSyndicate.Models.AuditPropertyChange"/> model.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.AuditPropertyChangeDataAnnotations.PropertyName">
+            <summary>
+            Data annotations for <see cref="P:SimpleSyndicate.Models.AuditPropertyChange.PropertyName"/>
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.Models.DataAnnotations.AuditPropertyChangeDataAnnotations.PropertyName.MaxLength">
+            <summary>
+            Minimum length of <see cref="P:SimpleSyndicate.Models.AuditPropertyChange.PropertyName"/>.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.IAuditUser">
+            <summary>
+            Interface for obtaining details of the user that is saving the changes; used by <see cref="T:SimpleSyndicate.Auditing.Audit`2"/>.
+            </summary>
+            <seealso cref="T:SimpleSyndicate.Auditing.Audit`2"/>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.IAuditUser.UserId">
+            <summary>
+            Returns the id of the user that is saving changes.
+            </summary>
+            <returns>The id of the user that is saving changes.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.Models.AuditChangeSet">
+            <summary>
+            Change sets record changes (creates, updates and deleted) made to entities in a data store; a single change set
+            can contain changes to multiple entities.
+            <note type="important">
+            Entities are modeled as objects with properties.
+            </note>
+            </summary>
+            <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/>
+            <see cref="T:SimpleSyndicate.Models.AuditPropertyChange"/>
+            <see cref="N:SimpleSyndicate.Auditing"/>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditChangeSet.Id">
+            <summary>
+            Gets or sets the id of the change set.
+            </summary>
+            <value>An integer that identifies the change set.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditChangeSet.Timestamp">
+            <summary>
+            Gets or sets the timestamp of when the changes were made.
+            </summary>
+            <value>A timestamp of when the changes were made.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditChangeSet.UserId">
+            <summary>
+            Gets or sets the user that made the changes.
+            </summary>
+            <value>A string that identifies the user that made the changes.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditChangeSet.ObjectChanges">
+            <summary>
+            Gets or sets the collection of all the <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/>s in the change set.
+            </summary>
+            <value>The object changes that make up the change set.</value>
+        </member>
+        <member name="T:SimpleSyndicate.Models.AuditObjectChange">
+            <summary>
+            A change made to an entity in a data store.
+            </summary>
+            <see cref="T:SimpleSyndicate.Models.AuditChangeSet"/>
+            <see cref="T:SimpleSyndicate.Models.AuditPropertyChange"/>
+            <see cref="N:SimpleSyndicate.Auditing"/>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditObjectChange.Id">
+            <summary>
+            Gets or sets the id of the object change.
+            </summary>
+            <value>An integer that identifies the object change.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditObjectChange.TypeName">
+            <summary>
+            Gets or sets the type name of the object that has been changed.
+            </summary>
+            <value>A string containing the type name of the object that has been changed.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditObjectChange.KeyValue">
+            <summary>
+            Gets or sets the key value identifying the entity that has been changed.
+            </summary>
+            <value>The value of the key that identifies the entity that has been changed.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditObjectChange.KeyValueAsInt">
+            <summary>
+            Gets or sets the key value identifying the entity that has been changed, but as an integer.
+            <note type="note">
+            This holds the same value as <see cref="P:SimpleSyndicate.Models.AuditObjectChange.KeyValue"/>, but is present to make querying easier; if the key value cannot be
+            converted to an integer this will be <c>null</c>.
+            </note>
+            </summary>
+            <value>The value of the key that identifies the object that has been changed, as an integer.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditObjectChange.ChangeType">
+            <summary>
+            Gets or sets the type of change -- 'C' is an entity has been created, 'U' is an entity has been updated and 'D' indicates an entity has been deleted.
+            </summary>
+            <value>The type of change -- 'C' if an entity has been created, 'U' if an entity has been updated or 'D' if an entity has been deleted.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditObjectChange.ChangeSet">
+            <summary>
+            Gets or sets the <see cref="T:SimpleSyndicate.Models.AuditChangeSet"/> this change is part of.
+            </summary>
+            <value>The change set this change is part of.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditObjectChange.PropertyChanges">
+            <summary>
+            Gets or sets the collection of all the <see cref="T:SimpleSyndicate.Models.AuditPropertyChange"/>s that were part of this change.
+            </summary>
+            <value>The property changes that make up the object change.</value>
+        </member>
+        <member name="T:SimpleSyndicate.Models.AuditPropertyChange">
+            <summary>
+            Details of a property change.
+            </summary>
+            <see cref="T:SimpleSyndicate.Models.AuditChangeSet"/>
+            <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/>
+            <see cref="N:SimpleSyndicate.Auditing"/>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditPropertyChange.Id">
+            <summary>
+            Gets or sets the id of the property change.
+            </summary>
+            <value>An integer identifying the property change.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditPropertyChange.PropertyName">
+            <summary>
+            Gets or sets the name of the property that has been changed.
+            </summary>
+            <value>A string containing the name of the property that has been changed.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditPropertyChange.Value">
+            <summary>
+            Gets or sets the value of the property that has been changed.
+            For creation, there's one <see cref="T:SimpleSyndicate.Models.AuditPropertyChange"/> per property, and this holds the value the property was populated with at creation;
+            for updates, there's one <see cref="T:SimpleSyndicate.Models.AuditPropertyChange"/> per updated property, and this holds the value the property was updated with;
+            for deletes, there's one <see cref="T:SimpleSyndicate.Models.AuditPropertyChange"/> per property, and this holds the value the property was when the entity was deleted.
+            </summary>
+            <value>A string containing the value of the property.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.AuditPropertyChange.ObjectChange">
+            <summary>
+            Gets or sets the <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/> this property change is part of.
+            </summary>
+            <value>The object change this property change is part of.</value>
+        </member>
+        <member name="T:SimpleSyndicate.Auditing.AuditObjectChangeHelpers">
+            <summary>
+            Helper methods for <see cref="T:SimpleSyndicate.Models.AuditObjectChange"/>.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditObjectChangeHelpers.TypeName(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>
+            Gets the type name for the specified <paramref name="entityEntry"/>.
+            </summary>
+            <param name="entityEntry">A <see cref="T:System.Data.Entity.Infrastructure.DbEntityEntry"/> instance.</param>
+            <returns>The type name</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditObjectChangeHelpers.PrimaryKeyName(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>
+            Gets the primary key name for the specified <paramref name="entityEntry"/>.
+            </summary>
+            <param name="entityEntry">A <see cref="T:System.Data.Entity.Infrastructure.DbEntityEntry"/> instance.</param>
+            <returns>The primary key name.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditObjectChangeHelpers.PrimaryKeyCurrentValue(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>
+            Gets the current value of the primary key for the specified <paramref name="entityEntry"/>.
+            </summary>
+            <param name="entityEntry">A <see cref="T:System.Data.Entity.Infrastructure.DbEntityEntry"/> instance.</param>
+            <returns>The current primary key value.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Auditing.AuditObjectChangeHelpers.PrimaryKeyOriginalValue(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>
+            Gets the original (i.e. before the changes being saved) value of the primary key for the specified <paramref name="entityEntry"/>.
+            </summary>
+            <param name="entityEntry">A <see cref="T:System.Data.Entity.Infrastructure.DbEntityEntry"/> instance.</param>
+            <returns>The original (i.e. before the changes being saved) primary key value.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.Models.DataAnnotations.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Models.DataAnnotations"/> namespace contains classes that hold data annotations for the <see cref="N:SimpleSyndicate.Models"/>.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Models"/> namespace contains classes that model entities.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Models.VersionHistoryItem">
+            <summary>
+            Version history item.
+            </summary>
+        </member>
+        <member name="P:SimpleSyndicate.Models.VersionHistoryItem.Id">
+            <summary>
+            Gets or sets the id of the version history item.
+            </summary>
+            <value>An integer identifying the version history item.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.VersionHistoryItem.MajorVersion">
+            <summary>
+            Gets or sets the major version number.
+            </summary>
+            <value>An integer holding the major version number.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.VersionHistoryItem.MinorVersion">
+            <summary>
+            Gets or sets the minor version number.
+            </summary>
+            <value>An integer holding the minor version number.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.VersionHistoryItem.PointVersion">
+            <summary>
+            Gets or sets the point version number.
+            </summary>
+            <value>An integer holding the point version number.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.VersionHistoryItem.ReleaseDate">
+            <summary>
+            Gets or sets the release date.
+            </summary>
+            <value>The release date.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Models.VersionHistoryItem.ReleaseNotes">
+            <summary>
+            Gets or sets the release notes.
+            </summary>
+            <value>The release notes.</value>
+        </member>
+        <member name="T:SimpleSyndicate.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate"/> namespace contains helper and extension methods for working with <see cref="N:System"/> classes.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Reflection.AssemblyHelpers">
+            <summary>
+            Helper methods for working with <see cref="T:System.Reflection.Assembly"/>s.
+            </summary>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyHelpers.ExecutingAssemblyVersion">
+            <summary>
+            Gets the executing assembly version.
+            </summary>
+            <value>The executing assembly version.</value>
+        </member>
+        <member name="T:SimpleSyndicate.Reflection.AssemblyInfo">
+            <summary>
+            Provides easy access to, and manipulation of, an <c>AssemblyInfo.cs</c> file.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.Reflection.AssemblyInfo.contents">
+            <summary>
+            The <c>AssemblyInfo.cs</c> file contents.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Reflection.AssemblyInfo.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SimpleSyndicate.Reflection.AssemblyInfo"/> class using the <c>AssemblyInfo.cs</c> at the specified <paramref name="path"/>.
+            </summary>
+            <param name="path">The <c>AssemblyInfo.cs</c> to use.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Reflection.AssemblyInfo.GetAttributeValue(System.String)">
+            <summary>
+            Returns the value of the attribute with the specified <paramref name="name"/>.
+            </summary>
+            <param name="name">The attribute name.</param>
+            <returns>The attribute value.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Reflection.AssemblyInfo.GetAttributeValueAsBool(System.String)">
+            <summary>
+            Returns the value of the attribute with the specified <paramref name="name"/> as a <see cref="T:System.Boolean"/>; if the
+            value cannot be converted to a <see cref="T:System.Boolean"/>, <c>false</c> is returned.
+            </summary>
+            <param name="name">The attribute name.</param>
+            <returns>The attribute value.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Reflection.AssemblyInfo.SetAttributeValue(System.String,System.String)">
+            <summary>
+            Sets the value of the attribute with the specified <paramref name="name"/> to the specified <paramref name="newValue"/>.
+            </summary>
+            <param name="name">The attribute name.</param>
+            <param name="newValue">The new attribute value.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Reflection.AssemblyInfo.SetAttributeValue(System.String,System.Boolean)">
+            <summary>
+            Sets the value of the attribute with the specified <paramref name="name"/> to the specified <paramref name="newValue"/>.
+            </summary>
+            <param name="name">The attribute name.</param>
+            <param name="newValue">The new attribute value.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Reflection.AssemblyInfo.AttributeValue(System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the value of the attribute with the specified <paramref name="name"/>; if <paramref name="replaceValue"/> is
+            <c>true</c>, the original value is replaced with the specified <paramref name="newValue"/>.
+            </summary>
+            <param name="name">The attribute name.</param>
+            <param name="replaceValue"><c>true</c> to replace the existing value with <paramref name="newValue"/>; <c>fales</c> otherwise.</param>
+            <param name="newValue">The new attribute value.</param>
+            <returns>The attribute value.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Reflection.AssemblyInfo.Load">
+            <summary>
+            Loads the <c>AssemblyInfo.cs</c>.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.Reflection.AssemblyInfo.Save">
+            <summary>
+            Saves the <c>AssemblyInfo.cs</c>.
+            </summary>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Path">
+            <summary>
+            Gets the path to the <c>AssemblyInfo.cs</c>.
+            </summary>
+            <value>The path.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.FileName">
+            <summary>
+            Gets the filename of the <c>AssemblyInfo.cs</c>.
+            </summary>
+            <value>The filename.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.CLSCompliant">
+            <summary>
+            Gets or sets a value indicating whether the assembly is CLS compliant.
+            </summary>
+            <value><c>true</c> if the assembly is CLS compliant; <c>false</c> otherwise.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Company">
+            <summary>
+            Gets or sets the assembly company.
+            </summary>
+            <value>The assembly company.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Configuration">
+            <summary>
+            Gets or sets the assembly configuration.
+            </summary>
+            <value>The assembly configuration.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Copyright">
+            <summary>
+            Gets or sets the assembly copyright.
+            </summary>
+            <value>The assembly copyright.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Culture">
+            <summary>
+            Gets or sets the assembly culture.
+            </summary>
+            <value>The assembly culture.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Description">
+            <summary>
+            Gets or sets the assembly description.
+            </summary>
+            <value>The assembly description.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.FileVersion">
+            <summary>
+            Gets or sets the assembly file version.
+            </summary>
+            <value>The assembly file version.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Product">
+            <summary>
+            Gets or sets the assembly product.
+            </summary>
+            <value>The assembly product.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Title">
+            <summary>
+            Gets or sets the assembly title.
+            </summary>
+            <value>The assembly title.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Trademark">
+            <summary>
+            Gets or sets the assembly trademark.
+            </summary>
+            <value>The assembly trademark.</value>
+        </member>
+        <member name="P:SimpleSyndicate.Reflection.AssemblyInfo.Version">
+            <summary>
+            Gets or sets the assembly version.
+            </summary>
+            <value>The assembly version.</value>
+        </member>
+        <member name="T:SimpleSyndicate.Reflection.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Reflection"/> namespace contains helper and extension methods for working with <see cref="N:System.Reflection"/> classes.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.Repositories.IRepository`1">
+            <summary>
+            Generic repository interface; further details on this pattern, and examples of concrete implementations can be found in the
+            <a href="http://gazooka_g72.bitbucket.org/SimpleSyndicate/html/8f7b4692-c1f5-468d-94ee-67de6f70f7ac.htm">online documentation</a>.
+            </summary>
+            <typeparam name="TEntity">The entity type the repository holds.</typeparam>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.All">
+            <overloads>
+            <summary>
+            Gets all the entities in the repository.
+            <note type="important">
+            It is strongly recommended that <see cref="M:SimpleSyndicate.Repositories.IRepository`1.All``1"/> be used rather than <see cref="M:SimpleSyndicate.Repositories.IRepository`1.All"/> to avoid unnecessary overhead.
+            </note>
+            </summary>
+            </overloads>
+            <summary>
+            Gets all the entities in the repository.
+            <note type="important">
+            As every field of every entity will be returned, it is strongly recommended that <see cref="M:SimpleSyndicate.Repositories.IRepository`1.All``1"/> be used instead to avoid unnecessary overhead.
+            </note>
+            </summary>
+            <returns>An <see cref="T:System.Linq.IQueryable"/> of all the entities.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.All``1">
+            <summary>
+            Gets all the entities in the repository, projecting them to type <typeparamref name="TProjection"/>.
+            <note type="note">
+            Only the fields that actually get projected will be queried from the underlying data store, improving performance.
+            </note>
+            </summary>
+            <typeparam name="TProjection">Type to project the entities to.</typeparam>
+            <returns>An <see cref="T:System.Linq.IQueryable"/> of all the projected entities.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.Count">
+            <summary>
+            Returns the number of entities in the repository.
+            </summary>
+            <returns>The number of entities in the repository.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.Find(System.Nullable{System.Int32})">
+            <overloads>
+            <summary>
+            Finds an entity.
+            <note type="important">
+            It is strongly recommended that <see cref="M:SimpleSyndicate.Repositories.IRepository`1.Find``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})"/> be used rather than <see cref="M:SimpleSyndicate.Repositories.IRepository`1.Find(System.Nullable{System.Int32})"/> to avoid unnecessary overhead.
+            </note>
+            </summary>
+            </overloads>
+            <summary>
+            Finds an entity with the given primary key. If no entity is found then <c>null</c> is returned.
+            <note type="important">
+            As every field of the entity will be returned, it is strongly recommended that <see cref="M:SimpleSyndicate.Repositories.IRepository`1.Find``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})"/> be used instead to avoid unnecessary overhead.
+            </note>
+            </summary>
+            <remarks>
+            The <typeparamref name="TEntity"/> must have a member decorated with a <see cref="T:System.ComponentModel.DataAnnotations.KeyAttribute"/>.
+            </remarks>
+            <param name="id">Id of the entity to find.</param>
+            <returns>The entity found, or <c>null</c>.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.Find``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Finds an entity using the specified predicate, projecting it to <typeparamref name="TProjection"/>. If no entity is found then <c>null</c> is returned.
+            <note type="note">
+            Only the fields that actually get projected will be queried from the underlying data store, improving performance.
+            </note>
+            </summary>
+            <typeparam name="TProjection">Type to project the entity to.</typeparam>
+            <param name="predicate">Predicate used to find the entity.</param>
+            <returns>The projected entity found, or <c>null</c>.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.Add(`0)">
+            <summary>
+            Adds an entity to the repository in such a manner that it will be inserted into the underling data store when <see cref="M:SimpleSyndicate.Repositories.IRepository`1.SaveChanges"/> is called.
+            </summary>
+            <param name="entity">The entity to add.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.Update(`0)">
+            <summary>
+            Updates an entity in the repository in such a manner that the underlying data store will be updated when <see cref="M:SimpleSyndicate.Repositories.IRepository`1.SaveChanges"/> is called.
+            </summary>
+            <param name="entity">The entity to be updated.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.Delete(`0)">
+            <summary>
+            Marks an entity in the repository in such a manner that it will be deleted from the underling data store when <see cref="M:SimpleSyndicate.Repositories.IRepository`1.SaveChanges"/> is called.
+            </summary>
+            <param name="entity">The entity to delete.</param>
+        </member>
+        <member name="M:SimpleSyndicate.Repositories.IRepository`1.SaveChanges">
+            <summary>
+            Saves all changes made to the repository to the underlying data store.
+            </summary>
+            <returns>The number of objects written to the underlying data store.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.Repositories.NamespaceDoc">
+            <summary>
+            The <see cref="N:SimpleSyndicate.Repositories"/> namespace contains a generic repository interface.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.StringExtensions">
+            <summary>
+            The <see cref="T:SimpleSyndicate.StringExtensions"/> class contains methods that extend the <see cref="T:System.String"/> class.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.EndsWith(System.String,System.Char)">
+            <summary>
+            Returns whether the specified string ends with <paramref name="value"/>.
+            </summary>
+            <param name="source">The string to test.</param>
+            <param name="value">The character to compare.</param>
+            <returns><c>true</c> if the string ends with <paramref name="value"/>; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.EndsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Returns whether the specified string ends with <paramref name="value"/>.
+            </summary>
+            <param name="source">The string to test.</param>
+            <param name="value">The character to compare.</param>
+            <param name="comparisonType">One of the enumeration values that specifies how the comparison is performed.</param>
+            <returns><c>true</c> if the string ends with <paramref name="value"/>; <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.IsEmpty(System.String)">
+            <summary>
+            Indicates whether the specified string is empty.
+            </summary>
+            <param name="source">The string to test.</param>
+            <returns><c>true</c> if the string is empty, <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.IsWhiteSpace(System.String)">
+            <summary>
+            Indicates whether a specified string is empty or consists only of white-space characters.
+            </summary>
+            <param name="source">The string to test.</param>
+            <returns><c>true</c> if the string is empty or consists only of white-space characters, <c>false</c> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.Left(System.String,System.Int32)">
+            <summary>
+            Returns the left-most <paramref name="length"/> characters from <paramref name="source"/>; if <paramref name="length"/> is
+            more than the length of <paramref name="source"/>, <paramref name="source"/> is returned.
+            </summary>
+            <param name="source">The string instance that this method extends.</param>
+            <param name="length">The number of characters in the substring.</param>
+            <returns>THe left-most <paramref name="length"/> characters from <paramref name="source"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when <paramref name="length"/> is less than zero.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.ReplaceIgnoreCase(System.String,System.String,System.String)">
+            <summary>
+            Returns a new string in which all occurrences of a specified string in the current instance are replaced with another specified string.
+            </summary>
+            <param name="source">The string instance that this method extends.</param>
+            <param name="oldValue">The string to be replaced.</param>
+            <param name="newValue">The string to replace all occurrences of <paramref name="oldValue"/>.</param>
+            <returns>A string that is equivalent to the current string except that all instances of <paramref name="oldValue"/> are replaced
+            with <paramref name="newValue"/>. If <paramref name="oldValue"/> is not found in the current instance, the method returns the
+            current instance unchanged.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> or <paramref name="oldValue"/> are <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="oldValue"/> is the empty string ("").</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.Right(System.String,System.Int32)">
+            <summary>
+            Returns the right-most <paramref name="length"/> characters from <paramref name="source"/>; if <paramref name="length"/> is
+            more than the length of <paramref name="source"/>, <paramref name="source"/> is returned.
+            </summary>
+            <param name="source">The string instance that this method extends.</param>
+            <param name="length">The number of characters in the substring.</param>
+            <returns>THe right-most <paramref name="length"/> characters from <paramref name="source"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when <paramref name="length"/> is less than zero.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.Occurrences(System.String,System.Char)">
+            <summary>
+            Returns the number of times the specified <paramref name="value"/> occurs within a string.
+            </summary>
+            <param name="source">The string instance that this method extends.</param>
+            <param name="value">The <c>char</c> to search for.</param>
+            <returns>The number of times <paramref name="value"/> occurs.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.Occurrences(System.String,System.String)">
+            <summary>
+            Returns the number of times the specified <paramref name="value"/> occurs within a string.
+            </summary>
+            <param name="source">The string instance that this method extends.</param>
+            <param name="value">The string to search for.</param>
+            <returns>The number of times <paramref name="value"/> occurs.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.ToEnum``1(System.String)">
+            <summary>
+            Converts the string to the specified <typeparamref name="TEnum"/> enumeration.
+            </summary>
+            <typeparam name="TEnum">The enumeration to convert the <paramref name="source"/> to.</typeparam>
+            <param name="source">The <see cref="T:System.String"/> instance that this method extends.</param>
+            <returns>The <paramref name="source"/> converted to the <typeparamref name="TEnum"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if <paramref name="source"/> cannot be converted.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.ToEnum``1(System.String,``0)">
+            <summary>
+            Converts the string to the specified <typeparamref name="TEnum"/> enumeration, or <paramref name="defaultValue"/> if it cannot be converted.
+            </summary>
+            <typeparam name="TEnum">The enumeration type to convert the <paramref name="source"/> to.</typeparam>
+            <param name="source">The <see cref="T:System.String"/> instance that this method extends.</param>
+            <param name="defaultValue">The value to return if the <paramref name="source"/> cannot be converted.</param>
+            <returns>The <paramref name="source"/> converted to the <typeparamref name="TEnum"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.ToVersionComponent(System.String)">
+            <summary>
+            Converts the string to a <see cref="T:SimpleSyndicate.VersionComponent"/>, or <see cref="F:SimpleSyndicate.VersionComponent.Unknown"/> if it cannot be converted.
+            </summary>
+            <param name="source">The <see cref="T:System.String"/> instance that this method extends.</param>
+            <returns>The <paramref name="source"/> converted to a <see cref="T:SimpleSyndicate.VersionComponent"/>.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.ValueOrEmptyStringIfNull(System.String)">
+            <summary>
+            If the string is <c>null</c>, returns <c>String.Empty</c>; otherwise it returns the string.
+            </summary>
+            <param name="source">The <see cref="T:System.String"/> instance that this method extends.</param>
+            <returns><c>String.Empty</c> if <paramref name="source"/> is <c>null</c>; otherwise <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.ValueOrNullStringIfNull(System.String)">
+            <summary>
+            If the string is <c>null</c>, returns the string "NULL"; otherwise it returns the string.
+            </summary>
+            <param name="source">The <see cref="T:System.String"/> instance that this method extends.</param>
+            <returns>"NULL" if <paramref name="source"/> is <c>null</c>; otherwise <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.StringExtensions.ValueOrOtherValueIfNull(System.String,System.String)">
+            <summary>
+            If the string is <c>null</c>, returns <paramref name="valueIfNull"/>; otherwise it returns the string.
+            </summary>
+            <param name="source">The <see cref="T:System.String"/> instance that this method extends.</param>
+            <param name="valueIfNull">The string to return if <paramref name="source"/> is <c>null</c>.</param>
+            <returns><paramref name="valueIfNull"/> if <paramref name="source"/> is <c>null</c>; otherwise <paramref name="source"/>.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.TypeHelpers">
+            <summary>
+            Helper methods for working with <see cref="T:System.Type"/>s.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.TypeHelpers.FriendlyName(System.Type)">
+            <summary>
+            Returns the friendly name of the specified <paramref name="type"/>; for non-generic types this is just the name (e.g. String), whilst for generic types
+            this is the name plus the type arguments (e.g. IList&lt;String&gt;).
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to get the friendly name of.</param>
+            <returns>The <paramref name="type"/>'s friendly name.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.TypeHelpers.FullFriendlyName(System.Type)">
+            <summary>
+            Returns the full friendly name of the specified <paramref name="type"/>; for non-generic types this is the full name (e.g. System.String), whilst
+            for generic types this is the full name plus the full type arguments (e.g. System.Collections.Generic.IList&lt;System.String&gt;).
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to get the full friendly name of.</param>
+            <returns>The <paramref name="type"/>'s full friendly name.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.TypeHelpers.FullNameFromCodeDom(System.Type)">
+            <summary>
+            Gets the name of the specified <paramref name="type"/> using <see cref="N:System.CodeDom"/>, which will provide a more readable name.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to get the name of.</param>
+            <returns>The <paramref name="type"/>'s name.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="type"/> is <c>null</c>.</exception>
+        </member>
+        <member name="T:SimpleSyndicate.UriHelpers">
+            <summary>
+            Helper methods for working with <see cref="T:System.Uri"/>s.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.UriHelpers.BuildUri(System.String,System.String)">
+            <summary>
+            Builds a URI from a base URI and a path.
+            </summary>
+            <param name="baseAddress">Base URI.</param>
+            <param name="path">Path to resource.</param>
+            <returns>A <see cref="T:System.Uri"/> object formed from the <paramref name="baseAddress"/> and the <paramref name="path"/>.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.UriHelpers.BuildUri(System.String,System.String,System.String,System.String)">
+            <summary>
+            Builds a URI from a base URI, path and a single parameter.
+            </summary>
+            <param name="baseAddress">Base URI.</param>
+            <param name="path">Path to resource.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="parameterValue">Value of the parameter.</param>
+            <returns>A <see cref="T:System.Uri"/> object formed from the <paramref name="baseAddress"/>, the <paramref name="path"/> and the parameter.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.UriHelpers.BuildUri(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Builds a URI from a base URI, path and two parameters.
+            </summary>
+            <param name="baseAddress">Base URI.</param>
+            <param name="path">Path to resource.</param>
+            <param name="parameterName1">Name of the first parameter.</param>
+            <param name="parameterValue1">Value of the first parameter.</param>
+            <param name="parameterName2">Name of the second parameter.</param>
+            <param name="parameterValue2">Value of the second parameter.</param>
+            <returns>A <see cref="T:System.Uri"/> object formed from the <paramref name="baseAddress"/>, the <paramref name="path"/> and the two parameters.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.UriHelpers.BuildUri(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Builds a URI from a base URI, path and three parameters.
+            </summary>
+            <param name="baseAddress">Base URI.</param>
+            <param name="path">Path to resource.</param>
+            <param name="parameterName1">Name of the first parameter.</param>
+            <param name="parameterValue1">Value of the first parameter.</param>
+            <param name="parameterName2">Name of the second parameter.</param>
+            <param name="parameterValue2">Value of the second parameter.</param>
+            <param name="parameterName3">Name of the third parameter.</param>
+            <param name="parameterValue3">Value of the third parameter.</param>
+            <returns>A <see cref="T:System.Uri"/> object formed from the <paramref name="baseAddress"/>, the <paramref name="path"/> and the three parameters.</returns>
+        </member>
+        <member name="M:SimpleSyndicate.UriHelpers.BuildUri(System.String,System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Builds a URI from a base URI, path and a parameter collection.
+            </summary>
+            <param name="baseAddress">Base URI.</param>
+            <param name="path">Path to resource.</param>
+            <param name="uriParameters">Collection of parameters.</param>
+            <returns>A <see cref="T:System.Uri"/> object formed from the <paramref name="baseAddress"/>, the <paramref name="path"/> and the <paramref name="uriParameters"/>.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.VersionComponent">
+            <summary>
+            Version component.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.VersionComponent.Unknown">
+            <summary>
+            Unknown component.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.VersionComponent.Major">
+            <summary>
+            Major component.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.VersionComponent.Minor">
+            <summary>
+            Minor component.
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.VersionComponent.Build">
+            <summary>
+            Build component
+            </summary>
+        </member>
+        <member name="F:SimpleSyndicate.VersionComponent.Revision">
+            <summary>
+            Revision component.
+            </summary>
+        </member>
+        <member name="T:SimpleSyndicate.VersionComponentFactory">
+            <summary>
+            Factory class for creating <see cref="T:SimpleSyndicate.VersionComponent"/>.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.VersionComponentFactory.Create(System.String)">
+            <summary>
+            Converts the string to a <see cref="T:SimpleSyndicate.VersionComponent"/>, or <see cref="F:SimpleSyndicate.VersionComponent.Unknown"/> if it cannot be converted.
+            </summary>
+            <param name="source">The string to convert.</param>
+            <returns>The <paramref name="source"/> converted to a <see cref="T:SimpleSyndicate.VersionComponent"/>.</returns>
+        </member>
+        <member name="T:SimpleSyndicate.VersionExtensions">
+            <summary>
+            The <see cref="T:SimpleSyndicate.VersionExtensions"/> class contains methods that extend the <see cref="T:System.Version"/> class.
+            </summary>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.IncrementMajor(System.Version)">
+            <summary>
+            Increments the major version by 1, setting the minor, build and revision to zero.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <returns>A new <see cref="T:System.Version"/> with the major version incremented by 1.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.IncrementMinor(System.Version)">
+            <summary>
+            Increments the minor version by 1, setting the build and revision to zero.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <returns>A new <see cref="T:System.Version"/> with the minor version incremented by 1.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.IncrementBuild(System.Version)">
+            <summary>
+            Increments the build number by 1, setting the revision to zero; if the build number is undefined it is treated as zero.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <returns>A new <see cref="T:System.Version"/> with the build number incremented by 1, or 1 if it was undefined.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.IncrementRevision(System.Version)">
+            <summary>
+            Increments the revision by 1; if the revision is undefined it is treated as zero.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <returns>A new <see cref="T:System.Version"/> with the revision incremented by 1, or 1 if it was undefined.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.RemoveBuild(System.Version)">
+            <summary>
+            Removes the build number by setting it to undefined; the revision is also set to undefined.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <returns>A new <see cref="T:System.Version"/> with the build number and revision set to undefined.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.RemoveRevision(System.Version)">
+            <summary>
+            Removes the revision by setting it to undefined.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <returns>A new <see cref="T:System.Version"/> with the revision set to undefined.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.SetMajor(System.Version,System.Int32)">
+            <summary>
+            Sets the major version to the specified value.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <param name="major">Major version.</param>
+            <returns>A new <see cref="T:System.Version"/> with the major version set to the specified value.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.SetMinor(System.Version,System.Int32)">
+            <summary>
+            Sets the minor version to the specified value.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <param name="minor">Minor version.</param>
+            <returns>A new <see cref="T:System.Version"/> with the minor version set to the specified value.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.SetBuild(System.Version,System.Int32)">
+            <summary>
+            Sets the build number to the specified value.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <param name="build">Build number.</param>
+            <returns>A new <see cref="T:System.Version"/> with the build number set to the specified value.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:SimpleSyndicate.VersionExtensions.SetRevision(System.Version,System.Int32)">
+            <summary>
+            Sets the revision to the specified value.
+            </summary>
+            <param name="source">The <see cref="T:System.Version"/> instance that this method extends.</param>
+            <param name="revision">The revision.</param>
+            <returns>A new <see cref="T:System.Version"/> with the revision set to the specified value.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="source"/> is <c>null</c>.</exception>
+        </member>
+    </members>
+</doc>

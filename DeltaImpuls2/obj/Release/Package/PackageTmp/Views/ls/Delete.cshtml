@@ -1,0 +1,24 @@
+﻿@model DeltaImpuls2.Models.ls
+
+@{
+    ViewBag.Title = "Verwijderen";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Weet jij zeker dat jij de licentie "@Html.DisplayFor(model => model.license)" wilt verwijderen?</h3>
+
+<h4>@Html.ValidationMessage("", new { @class = "text-danger" })</h4>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button type="button" class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Index")'">
+                Annuleren
+            </button>
+            <input type="submit" value="Verwijder" class="btn btn-danger btn-lg" />
+        </div>
+    }
+</div>

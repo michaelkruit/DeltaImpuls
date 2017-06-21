@@ -1,0 +1,228 @@
+﻿@model PagedList.IPagedList<DeltaImpuls2.Models.members>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Startpagina";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container">
+    <div class="content-left">
+        <div class="amount">
+            <h3>Aantal senioren: @ViewBag.SeniorAmount</h3>
+            <h3>Aantal junioren: @ViewBag.JuniorAmount</h3>
+        </div>
+        <h3>Filteren op: @Html.DropDownList("categorie_id", null, "Alle", htmlAttributes: new { @class = "form-control", @id = "categorieFilter" })</h3>
+    </div>
+
+    <div class="content-right">
+        <h3>Kies locatie: @Html.DropDownList("location_ID", null, "Alle", htmlAttributes: new { @class = "form-control", @id = "locationFilter" })</h3>
+        <h3>Zoek lid: @Html.TextBox("SearchString", ViewBag.SearchValue as string, htmlAttributes: new { @class = "form-control" })</h3>
+    </div>
+</div>
+
+@*<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("create")'">
+    <span class="fa fa-plus"></span> Nieuw lid toevoegen
+</button>*@
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.FirstOrDefault().firstname)*@
+            @Html.ActionLink("Voornaam", "Index", new { sortOrder = ViewBag.FirstNameSort, searchString = ViewBag.SearchValue, locationFilter = ViewBag.CurrentLocation, categorieFilter = ViewBag.CurrentCategorie })
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.FirstOrDefault().lastname)*@
+            @Html.ActionLink("Achternaam", "Index", new { sortOrder = ViewBag.LastNameSort, searchString = ViewBag.SearchValue, locationFilter = ViewBag.CurrentLocation, categorieFilter = ViewBag.CurrentCategorie })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().insertion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().bondsnr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().cg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().paratt)
+        </th>
+        <th>
+            Leeftijd
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().dateborn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().membersince)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().postcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().phonennumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().mobilenumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().email)
+        </th>
+        <th>
+            J/S
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().categorie.name)
+        </th>
+        <th>
+            LJ
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().location.city)
+        </th>
+        <th>
+            LS
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.insertion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bondsnr)
+            </td>
+            <td>
+                @{
+                    if (item.cg)
+                    {
+                        @Html.Raw("J")
+                    }
+                    else
+                    {
+                        @Html.Raw("N")
+                    }
+                }
+            </td>
+            <td>
+                @{
+                    if (item.paratt)
+                    {
+                        @Html.Raw("J")
+                    }
+                    else
+                    {
+                        @Html.Raw("N")
+                    }
+                }
+            </td>
+            <td>
+                @{
+                    var today = DateTime.Today;
+                    var age = today.Year - item.dateborn.Year;
+                    if (item.dateborn > today.AddYears(-age))
+                    {
+                        age--;
+                    }
+
+                    @Html.DisplayTextFor(model => age);
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateborn)
+            </td>
+            <td>
+                @{
+                    if (!item.gender)
+                    {
+                        @Html.Raw("M")
+                    }
+                    else
+                    {
+                        @Html.Raw("V")
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.membersince)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adres) @Html.DisplayFor(model => item.housenumber) @Html.DisplayFor(model => item.suffix) 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phonennumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mobilenumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @{
+                    if (item.categorie.name == "Senior")
+                    {
+                        @Html.Raw("S")
+                    }
+                    else
+                    {
+                        @Html.Raw("J")
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categorie.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lj.license)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ls.license)
+            </td>
+            <td>
+                <a href="@Url.Action("edit", new { id = item.ID })" class="btn btn-info">
+                    <span class="fa fa-pencil" aria-hidden="true"></span>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Action("delete", new { id = item.ID })" class="btn btn-danger">
+                    <span class="fa fa-trash" aria-hidden="true"></span>
+                </a>
+            </td>
+        </tr>
+                    }
+
+</table>
+<div class="paginations">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, searchString = ViewBag.SearchValue, locationFilter = ViewBag.CurrentLocation, categorieFilter = ViewBag.CurrentCategorie, sortOrder = ViewBag.CurrentSort }))
+</div>

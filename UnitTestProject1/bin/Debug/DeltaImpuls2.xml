@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeltaImpuls2</name>
+    </assembly>
+    <members>
+        <member name="T:DeltaImpuls2.Controllers.categoriesController">
+            <summary>
+            This controller handles the categories for this application
+            </summary>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.categoriesController.Index">
+            <summary>
+            Returns the view with the wished categories 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.categoriesController.Create">
+            <summary>
+            Returns the view for creating a categorie
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.categoriesController.Create(DeltaImpuls2.Models.categorie)">
+            <summary>
+            creates and saves the categorie in the database
+            </summary>
+            <param name="categorie">is the created categorie</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.categoriesController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Returns the view for editing a categorie
+            </summary>
+            <param name="id">ID of the categorie that is going to be edited</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.categoriesController.Edit(DeltaImpuls2.Models.categorie)">
+            <summary>
+            Saves the edited categorie in the database
+            </summary>
+            <param name="categorie">Edited categorie</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.categoriesController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Gets the categorie that is going to be deleted
+            </summary>
+            <param name="id">ID of the categorie that is going to be deleted</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.categoriesController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Confirms that the categorie is deleted and deletes it from the database
+            </summary>
+            <param name="id">ID of the selected categorie</param>
+            <returns></returns>
+        </member>
+        <member name="T:DeltaImpuls2.Controllers.ljsController">
+            <summary>
+            This controller handles the junior licenses of this application
+            </summary>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.ljsController.Index">
+            <summary>
+            Returns the view with the wished junior licenses
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.ljsController.Create">
+            <summary>
+            Returns the view for creating a junior licens
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.ljsController.Create(DeltaImpuls2.Models.lj)">
+            <summary>
+            Creates and saves the junior license in the database
+            </summary>
+            <param name="lj">Junior license that is created</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.ljsController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Returns the view for editing a junior licens
+            </summary>
+            <param name="id">ID of the junior license that is going to edited</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.ljsController.Edit(DeltaImpuls2.Models.lj)">
+            <summary>
+            Saves the edited junior license in the database
+            </summary>
+            <param name="lj">Junior license that is edited</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.ljsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Gets the junior license that is going to be deleted
+            </summary>
+            <param name="id">ID of the selected junior license</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.ljsController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Confirms that the junior license is deleted and deletes it from the database
+            </summary>
+            <param name="id">ID of the selected junior license</param>
+            <returns></returns>
+        </member>
+        <member name="T:DeltaImpuls2.Controllers.locationsController">
+            <summary>
+            This controller handles the locations for this application
+            </summary>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.locationsController.Index">
+            <summary>
+            Returns the view with the wished locations 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.locationsController.Create">
+            <summary>
+            Returns the view for creating a location
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.locationsController.Create(DeltaImpuls2.Models.location)">
+            <summary>
+            creates and saves the location in the database
+            </summary>
+            <param name="location"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.locationsController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Returns the view for editing a location
+            </summary>
+            <param name="id">ID of the location that is going to be edited</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.locationsController.Edit(DeltaImpuls2.Models.location)">
+            <summary>
+            Saves the edited location in the database
+            </summary>
+            <param name="location">Edited location</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.locationsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Gets the location that is going to be deleted
+            </summary>
+            <param name="id">ID of the location that is going to be deleted</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.locationsController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Confirms that the location is deleted and deletes it from the database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DeltaImpuls2.Controllers.lsController">
+            <summary>
+            This controller handles the senior licenses of this application
+            </summary>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.lsController.Index">
+            <summary>
+            Returns the view with the wished senior licenses
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.lsController.Create">
+            <summary>
+            Returns the view for creating a senior licens
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.lsController.Create(DeltaImpuls2.Models.ls)">
+            <summary>
+            Creates and saves the senior license in the database
+            </summary>
+            <param name="ls">Senior license thas is created</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.lsController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Returns the view for editing a senior licens
+            </summary>
+            <param name="id">ID of the senior license that is going to edited</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.lsController.Edit(DeltaImpuls2.Models.ls)">
+            <summary>
+            Saves the edited senior license in the database
+            </summary>
+            <param name="ls">Senior lincse that is edited</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.lsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Gets the senior license that is going to be deleted
+            </summary>
+            <param name="id">ID of the selected senior license</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.lsController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Confirms that the senior license is deleted and deletes it from the database
+            </summary>
+            <param name="id">ID of the selected senior license</param>
+            <returns></returns>
+        </member>
+        <member name="T:DeltaImpuls2.Controllers.membersController">
+            <summary>
+            This controller handles the members of this application, the index is also the main page of this application
+            </summary>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.membersController.Index(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            Returns the view with the wished members
+            </summary>
+            <param name="searchString">String for searching a member</param>
+            <param name="locationFilter">Int for filtering on location</param>
+            <param name="categorieFilter">Int for filtering on categorie</param>
+            <param name="page">Int for knowing on wich page of the pagintion the user is on</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.membersController.Create">
+            <summary>
+            Returns the view for creating a member
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.membersController.Create(DeltaImpuls2.Models.members)">
+            <summary>
+            Creates and saves a member in the database
+            </summary>
+            <param name="members">Member that is created</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.membersController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Returns the view for editing a member
+            </summary>
+            <param name="id">ID of the member that is going to be edited</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.membersController.Edit(DeltaImpuls2.Models.members)">
+            <summary>
+            Saves the edited member in the database
+            </summary>
+            <param name="members"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.membersController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Gets the member that is going to be deleted
+            </summary>
+            <param name="id">ID of the selected member</param>
+            <returns></returns>
+        </member>
+        <member name="M:DeltaImpuls2.Controllers.membersController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Confirms that the member is deleted and deletes it from the database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DeltaImpuls2.DAL.DeltaImpulsContext">
+            <summary>
+            Generates the datatables in the selected database
+            </summary>
+        </member>
+        <member name="T:DeltaImpuls2.Models.categorie">
+            <summary>
+            Gets and sets the categories
+            </summary>
+        </member>
+        <member name="T:DeltaImpuls2.Models.lj">
+            <summary>
+            Gets and sets the junior licenses
+            </summary>
+        </member>
+        <member name="T:DeltaImpuls2.Models.location">
+            <summary>
+            Gets and sets the locations
+            </summary>
+        </member>
+        <member name="T:DeltaImpuls2.Models.ls">
+            <summary>
+            Gets and sets the senior licenses
+            </summary>
+        </member>
+        <member name="T:DeltaImpuls2.Models.members">
+            <summary>
+            Gets and sets the members
+            </summary>
+        </member>
+    </members>
+</doc>
