@@ -13,7 +13,7 @@ namespace DeltaImpuls2.DAL
     /// </summary>
     public class DeltaImpulsContext : DbContext
     {
-        public DeltaImpulsContext() : base("codfirstDB")
+        public DeltaImpulsContext() : base("DeltaImpuls2.Properties.Settings.Connection")
         {
         }
 
